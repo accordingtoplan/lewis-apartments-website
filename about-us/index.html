@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en" data-root="/">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — Lewis Apartments</title>
+<meta name="description" content="Lewis Apartment Communities has been developing and managing high-quality apartment homes since 1955. Learn about our history, values and commitment to residents.">
+<link rel="stylesheet" href="/includes/shared.css">
+<style>
+.page-hero {
+  background: var(--blue);
+  padding: clamp(100px,12vw,160px) 0 clamp(48px,6vw,80px);
+  position: relative; overflow: hidden;
+}
+.page-hero::after {
+  content:''; position:absolute; inset:0;
+  background: linear-gradient(135deg, var(--teal) 0%, transparent 60%);
+  opacity:.25; pointer-events:none;
+}
+.page-hero-inner { position:relative; z-index:1; }
+.page-hero .t-eyebrow { color:rgba(255,251,248,.45); margin-bottom:16px; }
+.page-hero .t-h1 { color:var(--cream); margin-bottom:20px; }
+.page-hero .t-body { color:rgba(255,251,248,.65); max-width:560px; }
+
+/* Intro */
+.intro-section { background:var(--cream); }
+.intro-grid { display:grid; grid-template-columns:5fr 7fr; gap:clamp(48px,7vw,120px); align-items:start; }
+.intro-left .t-eyebrow { margin-bottom:16px; }
+.intro-left .t-h2 { }
+.intro-right .t-body { margin-bottom:32px; }
+
+/* Stats */
+.stats-wrap { background:var(--blue); padding:clamp(48px,6vw,80px) 0; }
+.stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(255,251,248,.06); }
+.stat { background:rgba(255,251,248,.02); padding:clamp(28px,4vw,48px) clamp(20px,3vw,40px); }
+.stat-n { font-size:clamp(40px,4.5vw,64px); font-weight:500; letter-spacing:-0.03em; color:var(--cream); line-height:1; margin-bottom:12px; }
+.stat-l { font-size:11px; font-weight:400; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,251,248,.38); line-height:1.6; }
+
+/* Values */
+.values-section { background:var(--cream); }
+.values-head .t-eyebrow { margin-bottom:16px; }
+.values-head .t-h2 { margin-bottom:clamp(40px,5vw,64px); }
+.values-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border); border-radius:3px; overflow:hidden; }
+.value-item { background:var(--cream); padding:36px 28px; }
+.value-num { font-size:11px; font-weight:500; letter-spacing:.1em; color:var(--teal); margin-bottom:16px; }
+.value-name { font-size:18px; font-weight:500; letter-spacing:-.01em; margin-bottom:12px; }
+.value-desc { font-size:14px; font-weight:400; color:var(--gray); line-height:1.65; }
+
+/* Split — The Lewis Difference */
+.split { display:grid; grid-template-columns:1fr 1fr; min-height:560px; }
+.split-img { position:relative; overflow:hidden; background:var(--blue); }
+.split-img img { width:100%;height:100%;object-fit:cover; }
+.split-content { display:flex; flex-direction:column; justify-content:center; padding:clamp(48px,6vw,100px); }
+.split-content .t-eyebrow { margin-bottom:20px; }
+.split-content .t-h2 { margin-bottom:24px; }
+.split-content .t-body { margin-bottom:40px; }
+
+/* Awards */
+.awards-section { background:var(--warm); }
+.awards-inner { display:grid; grid-template-columns:1fr 1fr; gap:clamp(40px,6vw,100px); align-items:center; }
+.awards-left .t-eyebrow { margin-bottom:16px; }
+.awards-left .t-h2 { margin-bottom:24px; }
+.award-list { display:flex; flex-direction:column; gap:1px; background:rgba(5,44,55,.1); border-radius:3px; overflow:hidden; }
+.award-row { background:var(--warm); padding:20px 24px; display:flex; align-items:flex-start; gap:14px; }
+.award-dot { width:5px;height:5px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:8px; }
+.award-text { font-size:14px;color:var(--blue);line-height:1.55; }
+.award-text strong { font-weight:600; }
+
+/* Team / parent */
+.parent-section { background:var(--blue); padding:clamp(64px,8vw,120px) 0; }
+.parent-inner { display:grid; grid-template-columns:1fr 1fr; gap:clamp(40px,6vw,80px); align-items:center; }
+.parent-inner .t-eyebrow { color:rgba(255,251,248,.4); margin-bottom:16px; }
+.parent-inner .t-h2 { color:var(--cream); margin-bottom:24px; }
+.parent-inner .t-body { color:rgba(255,251,248,.62); margin-bottom:40px; }
+.parent-logos { display:flex; flex-direction:column; gap:20px; }
+.parent-logo-item { display:flex; align-items:center; gap:16px; padding:16px 20px; background:rgba(255,251,248,.05); border-radius:3px; }
+.parent-logo-dot { width:8px;height:8px;border-radius:50%;flex-shrink:0; }
+.parent-logo-name { font-size:14px;font-weight:500;color:var(--cream); }
+.parent-logo-desc { font-size:12px;color:rgba(255,251,248,.4);margin-top:2px; }
+
+@media(max-width:1024px){
+  .intro-grid,.awards-inner,.parent-inner { grid-template-columns:1fr; }
+  .split { grid-template-columns:1fr; }
+  .split-img { min-height:360px; order:-1; }
+  .stats-grid { grid-template-columns:1fr 1fr; }
+  .values-grid { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:640px){
+  .values-grid { grid-template-columns:1fr; }
+  .stats-grid { grid-template-columns:1fr 1fr; }
+}
+</style>
+</head>
+<body>
+<div id="nav-include"></div>
+
+<!-- PAGE HERO -->
+<section class="page-hero" aria-labelledby="about-h">
+  <div class="wrap page-hero-inner">
+    <p class="t-eyebrow">Lewis Apartments</p>
+    <h1 class="t-h1" id="about-h">Building better communities since 1955.</h1>
+    <p class="t-body">We develop and manage apartment homes where thoughtful design and genuine care make all the difference.</p>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="section intro-section" aria-labelledby="intro-h">
+  <div class="wrap">
+    <div class="intro-grid">
+      <div>
+        <p class="t-eyebrow">Who we are</p>
+        <h2 class="t-h2" id="intro-h">Better communities.<br>Better lives.</h2>
+      </div>
+      <div>
+        <p class="t-body">Lewis Apartment Communities is part of the Lewis Group of Companies — a family-led community development group founded in 1955 by Goldy and Ralph Lewis. What began as a homebuilding company in Southern California has grown into one of the nation's largest privately held community developers, with a legacy that includes more than 58,000 homes, 13,000 apartments, and 24 million square feet of retail, office and industrial space throughout California and Nevada.</p>
+        <br>
+        <p class="t-body">We take a community-first approach to development. We are devoted to leaving the world better than we found it — by building meaningful relationships, fostering a culture of inclusion and empowerment, creating new opportunities, and delivering real long-term value for residents and the wider communities we serve.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-wrap" aria-label="Lewis by the numbers">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat"><div class="stat-n">1955</div><div class="stat-l">Year founded by<br>Goldy &amp; Ralph Lewis</div></div>
+      <div class="stat"><div class="stat-n">13k+</div><div class="stat-l">Apartment homes<br>under management</div></div>
+      <div class="stat"><div class="stat-n">58k</div><div class="stat-l">Total homes<br>built by Lewis</div></div>
+      <div class="stat"><div class="stat-n">19</div><div class="stat-l">Consecutive years,<br>Customer Service Award</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- VALUES -->
+<section class="section values-section" aria-labelledby="values-h">
+  <div class="wrap">
+    <div class="values-head">
+      <p class="t-eyebrow">What drives us</p>
+      <h2 class="t-h2" id="values-h">The Lewis Difference.</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-item">
+        <div class="value-num">01</div>
+        <div class="value-name">Responsibility</div>
+        <div class="value-desc">We take ownership of our actions and their impact on residents, employees, partners and the communities we serve.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">02</div>
+        <div class="value-name">Collaboration</div>
+        <div class="value-desc">We believe that together, we can do bigger and better things — and do them more efficiently. Partnership is at the heart of everything we build.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">03</div>
+        <div class="value-name">Authenticity</div>
+        <div class="value-desc">We are who we say we are. Our actions match our words, and our communities reflect our genuine commitment to quality.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">04</div>
+        <div class="value-name">Integrity</div>
+        <div class="value-desc">We do what we say we'll do — fueled by passion, precision and the highest level of integrity at every stage of development.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT — Recognition -->
+<section class="split" aria-labelledby="recog-h">
+  <div class="split-img">
+    <img src="https://lewisgroupofcompanies.com/wp-content/uploads/2023/08/Lewis_Jamboree_EntryGate_0114-11x8_edit-1-2048x1365.jpg"
+         alt="Lewis community entrance" loading="lazy">
+  </div>
+  <div class="split-content" style="background:var(--cream);">
+    <p class="t-eyebrow">Recognition</p>
+    <h2 class="t-h2" id="recog-h">19 consecutive years of service excellence.</h2>
+    <p class="t-body">We are proud to have earned the National Multifamily Housing Council's Excellence in Customer Service Award for 19 consecutive years. Our residents' satisfaction and loyalty drive everything we do.</p>
+    <a href="/our-communities/" class="cta-link cta-link-teal">View our communities</a>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section class="section awards-section" aria-labelledby="awards-h">
+  <div class="wrap">
+    <div class="awards-inner">
+      <div class="awards-left">
+        <p class="t-eyebrow">Our track record</p>
+        <h2 class="t-h2" id="awards-h">Recognised for what matters most.</h2>
+        <p class="t-body">Every award we receive reflects the trust our residents place in us, and the commitment of our on-site teams.</p>
+      </div>
+      <div class="award-list">
+        <div class="award-row"><span class="award-dot"></span><span class="award-text"><strong>National Multifamily Excellence in Customer Service Award</strong> — 19 consecutive years</span></div>
+        <div class="award-row"><span class="award-dot"></span><span class="award-text"><strong>TALi Award Winner 2025</strong> — Outstanding Resident Loyalty &amp; Satisfaction</span></div>
+        <div class="award-row"><span class="award-dot"></span><span class="award-text">Top 1% nationally for online reputation — <strong>Harvest in Tracy, Santa Barbara Chino Hills, The Enclave, Homecoming at The Resort</strong></span></div>
+        <div class="award-row"><span class="award-dot"></span><span class="award-text"><strong>The Lewis 24-Hour Service Commitment</strong> — maintenance requests addressed within one business day</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARENT COMPANY -->
+<section class="parent-section" aria-labelledby="parent-h">
+  <div class="wrap">
+    <div class="parent-inner">
+      <div>
+        <p class="t-eyebrow">Part of something larger</p>
+        <h2 class="t-h2" id="parent-h">The Lewis Group of Companies.</h2>
+        <p class="t-body">Lewis Apartments is one of five independent businesses that together form the Lewis Group of Companies — a family-led group devoted to building communities where people genuinely want to live, work and invest.</p>
+        <a href="https://lewisgroupofcompanies.com" target="_blank" rel="noopener" class="cta-link cta-link-cream">Lewis Group of Companies</a>
+      </div>
+      <div class="parent-logos">
+        <div class="parent-logo-item">
+          <div class="parent-logo-dot" style="background:#196464;"></div>
+          <div><div class="parent-logo-name">Lewis Apartments</div><div class="parent-logo-desc">13,000+ apartment homes in California &amp; Nevada</div></div>
+        </div>
+        <div class="parent-logo-item">
+          <div class="parent-logo-dot" style="background:#68260E;"></div>
+          <div><div class="parent-logo-name">Lewis Retail Centers</div><div class="parent-logo-desc">Retail communities across Southern California</div></div>
+        </div>
+        <div class="parent-logo-item">
+          <div class="parent-logo-dot" style="background:#2759AE;"></div>
+          <div><div class="parent-logo-name">Lewis Planned Communities</div><div class="parent-logo-desc">Master-planned communities in CA &amp; NV</div></div>
+        </div>
+        <div class="parent-logo-item">
+          <div class="parent-logo-dot" style="background:#2A501A;"></div>
+          <div><div class="parent-logo-name">Lewis Office &amp; Industrial</div><div class="parent-logo-desc">Office and industrial sites throughout CA &amp; NV</div></div>
+        </div>
+        <div class="parent-logo-item">
+          <div class="parent-logo-dot" style="background:#9E6834;"></div>
+          <div><div class="parent-logo-name">Lewis Land Acquisition</div><div class="parent-logo-desc">Identifying and entitling new opportunities</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section" style="background:var(--teal);">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,96px);align-items:center;">
+      <div>
+        <p class="t-eyebrow" style="color:rgba(255,251,248,.4);margin-bottom:20px;">Join us</p>
+        <h2 class="t-h2" style="color:var(--cream);">Interested in a career at Lewis?</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:20px;">
+        <p style="font-size:17px;font-weight:400;color:rgba(255,251,248,.65);line-height:1.65;">We're always looking for people who care about building better communities. Explore open roles at Lewis.</p>
+        <a href="https://lewiscareers.com" target="_blank" rel="noopener" class="btn btn-cream">View careers</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-include"></div>
+<script src="/js/includes.js"></script>
+</body>
+</html>
