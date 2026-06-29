@@ -5,35 +5,59 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lewis Apartments — Better communities. Better lives.</title>
 <meta name="description" content="With more than 13,000 apartment homes across California and Nevada, Lewis remains a leader in the development and management of thoughtfully crafted residential communities.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <style>
+/* ─── FONTS — self-hosted Haffer SQ ──────────────────── */
+@font-face {
+  font-family: 'Haffer SQ';
+  src: url('./fonts/HafferSQ-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Haffer SQ';
+  src: url('./fonts/HafferSQ-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Haffer SQ';
+  src: url('./fonts/HafferSQ-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* ─── TOKENS ──────────────────────────────────────────── */
 :root {
-  --cream:      #FFFBF8;
-  --blue:       #052C37;
-  --teal:       #196464;
-  --teal-mid:   #254D57;
-  --warm:       #EADECE;
-  --gray:       #6B6B6B;
-  --border:     rgba(5,44,55,0.1);
-  --ff:         'DM Sans', sans-serif;
-  --max:        1280px;
-  --pad:        clamp(28px, 5.5vw, 88px);
+  --cream:    #FFFBF8;
+  --blue:     #052C37;
+  --teal:     #196464;
+  --teal-mid: #254D57;
+  --warm:     #EADECE;
+  --gray:     #6B6B6B;
+  --border:   rgba(5,44,55,0.1);
+  --ff:       'Haffer SQ', sans-serif;
+  --max:      1280px;
+  --pad:      clamp(28px, 5.5vw, 88px);
 }
 
 /* ─── RESET ───────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { font-family: var(--ff); background: var(--cream); color: var(--blue); -webkit-font-smoothing: antialiased; }
+body {
+  font-family: var(--ff);
+  background: var(--cream);
+  color: var(--blue);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
 img { display: block; max-width: 100%; }
 a { text-decoration: none; color: inherit; }
 button { font-family: var(--ff); cursor: pointer; border: none; background: none; }
 
-/* ─── TYPE ────────────────────────────────────────────── */
-/* Haffer SQ XH Medium stand-in — DM Sans 500 */
+/* ─── TYPE SCALE ──────────────────────────────────────── */
 .t-eyebrow {
   font-size: 11px;
   font-weight: 500;
@@ -41,49 +65,44 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
   text-transform: uppercase;
   color: var(--teal);
 }
-.t-eyebrow-cream { color: rgba(255,251,248,.5); }
+.t-eyebrow-cream { color: rgba(255,251,248,.45); }
 
-/* Headlines — Haffer SQ XH Medium, large, sentence case */
 .t-h1 {
-  font-size: clamp(44px, 6.5vw, 96px);
+  font-size: clamp(44px, 6.5vw, 92px);
   font-weight: 500;
   line-height: 1.02;
   letter-spacing: -0.025em;
 }
 .t-h2 {
-  font-size: clamp(32px, 4vw, 60px);
+  font-size: clamp(30px, 3.8vw, 56px);
   font-weight: 500;
   line-height: 1.06;
   letter-spacing: -0.02em;
 }
 .t-h3 {
-  font-size: clamp(20px, 2vw, 28px);
+  font-size: clamp(18px, 1.8vw, 26px);
   font-weight: 500;
-  line-height: 1.15;
+  line-height: 1.18;
   letter-spacing: -0.01em;
 }
-/* Body — Haffer SQ Regular, light weight */
 .t-body {
-  font-size: clamp(16px, 1.4vw, 20px);
-  font-weight: 300;
+  font-size: clamp(16px, 1.3vw, 19px);
+  font-weight: 400;
   line-height: 1.65;
   color: var(--teal-mid);
 }
 .t-body-sm {
-  font-size: 15px;
-  font-weight: 300;
-  line-height: 1.65;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
   color: var(--gray);
-}
-.t-body-cream {
-  color: rgba(255,251,248,.65);
 }
 
 /* ─── LAYOUT ──────────────────────────────────────────── */
 .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+.section { padding: clamp(72px, 9vw, 140px) 0; }
 
-/* ─── CTA LINKS ───────────────────────────────────────── */
-/* Text link with arrow — as used on lewisgroupofcompanies.com */
+/* ─── CTAs ────────────────────────────────────────────── */
 .cta-link {
   display: inline-flex;
   align-items: center;
@@ -91,20 +110,20 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
   font-size: 14px;
   font-weight: 500;
   letter-spacing: .04em;
-  color: var(--blue);
   transition: gap .2s;
 }
-.cta-link::after { content: '→'; font-size: 16px; }
+.cta-link::after { content: '→'; font-size: 15px; }
 .cta-link:hover { gap: 16px; }
-.cta-link-cream { color: var(--cream); }
+.cta-link-dark  { color: var(--blue); }
 .cta-link-teal  { color: var(--teal); }
+.cta-link-cream { color: var(--cream); }
 
-/* Pill button — used sparingly */
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   padding: 14px 32px;
+  font-family: var(--ff);
   font-size: 14px;
   font-weight: 500;
   letter-spacing: .03em;
@@ -114,7 +133,7 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
 .btn::after { content: '→'; }
 .btn-cream { background: var(--cream); color: var(--blue); }
 .btn-cream:hover { background: var(--warm); }
-.btn-outline-cream { border: 1px solid rgba(255,251,248,.4); color: var(--cream); }
+.btn-outline-cream { border: 1px solid rgba(255,251,248,.4); color: var(--cream); background: transparent; }
 .btn-outline-cream:hover { background: rgba(255,251,248,.1); }
 
 /* ─── NAV ─────────────────────────────────────────────── */
@@ -122,12 +141,13 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
   position: fixed;
   inset: 0 0 auto;
   z-index: 200;
-  transition: background .3s, border-color .3s;
+  transition: background .3s, border-color .3s, box-shadow .3s;
   border-bottom: 1px solid transparent;
 }
 .nav.scrolled {
   background: var(--cream);
   border-color: var(--border);
+  box-shadow: 0 2px 24px rgba(5,44,55,.06);
 }
 .nav-inner {
   display: flex;
@@ -139,42 +159,23 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
   padding: 0 var(--pad);
 }
 
-/* Logo — "LEWIS" bold wordmark + "APARTMENTS" sub in small caps */
-.logo {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-  text-decoration: none;
-}
-.logo-mark {
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: .08em;
-  color: var(--cream);
-  transition: color .3s;
-}
-.logo-sub {
-  font-size: 7.5px;
-  font-weight: 500;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: rgba(255,251,248,.5);
-  margin-top: 3px;
-  transition: color .3s;
-}
-.nav.scrolled .logo-mark { color: var(--blue); }
-.nav.scrolled .logo-sub  { color: var(--teal); }
+/* Logo — SVG Lewis Group of Companies lockup */
+.logo { display: block; line-height: 0; }
+.logo svg .logo-main    { fill: white; transition: fill .3s; }
+.logo svg .logo-sub     { fill: white; transition: fill .3s; }
+.nav.scrolled .logo svg .logo-main { fill: var(--blue); }
+.nav.scrolled .logo svg .logo-sub  { fill: var(--blue); }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 36px;
+  gap: 32px;
   list-style: none;
 }
 .nav-links a {
   font-size: 13px;
   font-weight: 400;
-  letter-spacing: .02em;
+  letter-spacing: .01em;
   color: rgba(255,251,248,.85);
   position: relative;
   padding-bottom: 2px;
@@ -190,14 +191,14 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
 }
 .nav-links a:hover::after { width: 100%; }
 .nav.scrolled .nav-links a { color: var(--blue); }
-.nav-links a:hover { color: var(--teal); }
+.nav-links a:hover,
 .nav.scrolled .nav-links a:hover { color: var(--teal); }
 
 /* ─── HERO ────────────────────────────────────────────── */
 .hero {
   position: relative;
   height: 100svh;
-  min-height: 600px;
+  min-height: 640px;
   overflow: hidden;
   display: flex;
   align-items: flex-end;
@@ -205,48 +206,36 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(170deg, #0d3d4a 0%, #196464 40%, #0a2830 100%);
+  background: var(--blue);
 }
 .hero-bg img {
   width: 100%; height: 100%;
   object-fit: cover;
-  opacity: .65;
+  object-position: center 40%;
+  opacity: .72;
 }
-/* Gradient overlay — dark bottom left for legibility */
 .hero-bg::after {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to top, rgba(5,44,55,.75) 0%, rgba(5,44,55,.2) 50%, transparent 100%),
-    linear-gradient(to right, rgba(5,44,55,.4) 0%, transparent 60%);
+    linear-gradient(to top,  rgba(5,44,55,.80) 0%, rgba(5,44,55,.15) 55%, transparent 100%),
+    linear-gradient(to right, rgba(5,44,55,.35) 0%, transparent 65%);
 }
 .hero-content {
   position: relative;
   z-index: 2;
-  padding: 0 var(--pad) clamp(56px, 7vw, 96px);
-  max-width: var(--max);
   width: 100%;
+  max-width: var(--max);
   margin: 0 auto;
+  padding: 0 var(--pad) clamp(56px, 7vw, 96px);
 }
 .hero-content .t-eyebrow { margin-bottom: 24px; }
-.hero-content .t-h1 {
-  color: var(--cream);
-  max-width: 740px;
-  margin-bottom: 32px;
-}
-.hero-content .t-body {
-  color: rgba(255,251,248,.7);
-  max-width: 520px;
-  margin-bottom: 44px;
-}
+.hero-content .t-h1 { color: var(--cream); max-width: 720px; margin-bottom: 28px; }
+.hero-content .t-body { color: rgba(255,251,248,.72); max-width: 500px; margin-bottom: 44px; }
 .hero-actions { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
 
-/* ─── SECTION BASE ────────────────────────────────────── */
-.section { padding: clamp(72px, 9vw, 140px) 0; }
-
-/* ─── MISSION SECTION — cream bg, large text ─────────── */
-.mission-section { background: var(--cream); }
+/* ─── MISSION ─────────────────────────────────────────── */
 .mission-inner {
   display: grid;
   grid-template-columns: 5fr 7fr;
@@ -254,16 +243,13 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
   align-items: start;
 }
 .mission-left .t-eyebrow { margin-bottom: 20px; }
-.mission-left .t-h2 { margin-bottom: 0; }
-.mission-right { padding-top: 8px; }
-.mission-right .t-body { margin-bottom: 40px; }
+.mission-right .t-body   { margin-bottom: 40px; }
 
-/* ─── FULL-BLEED IMAGE + TEXT SECTIONS ───────────────── */
-/* Lewis style: alternating full-width image with text overlay or beside */
-.split-section {
+/* ─── SPLIT SECTIONS ──────────────────────────────────── */
+.split {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 640px;
+  min-height: 620px;
 }
 .split-img {
   position: relative;
@@ -273,221 +259,243 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
 .split-img img {
   width: 100%; height: 100%;
   object-fit: cover;
-  transition: transform .6s ease;
+  object-position: center;
+  transition: transform .7s ease;
 }
-.split-section:hover .split-img img { transform: scale(1.03); }
+.split:hover .split-img img { transform: scale(1.04); }
 .split-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: clamp(48px, 6vw, 100px);
 }
-.split-content.cream-bg  { background: var(--cream); }
-.split-content.blue-bg   { background: var(--blue); }
-.split-content.teal-bg   { background: var(--teal); }
-
 .split-content .t-eyebrow { margin-bottom: 20px; }
-.split-content .t-h2 { margin-bottom: 24px; }
-.split-content .t-body { margin-bottom: 44px; }
-.split-content.blue-bg .t-h2  { color: var(--cream); }
-.split-content.blue-bg .t-body { color: rgba(255,251,248,.6); }
-.split-content.teal-bg .t-h2  { color: var(--cream); }
-.split-content.teal-bg .t-body { color: rgba(255,251,248,.65); }
+.split-content .t-h2      { margin-bottom: 24px; }
+.split-content .t-body    { margin-bottom: 44px; }
 
-/* ─── COMMUNITIES SECTION ────────────────────────────── */
-.communities-section { background: var(--cream); }
-.section-head {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: clamp(40px, 5vw, 64px);
-  gap: 24px;
-}
-.section-head .t-eyebrow { margin-bottom: 12px; }
+.bg-cream  { background: var(--cream); }
+.bg-blue   { background: var(--blue); }
+.bg-teal   { background: var(--teal); }
+.bg-warm   { background: var(--warm); }
 
-/* Tab bar */
-.tabs {
-  display: flex;
-  gap: 0;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 48px;
-}
-.tab {
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: .02em;
-  padding: 12px 0;
-  margin-right: 32px;
-  color: var(--gray);
-  cursor: pointer;
-  border-bottom: 1.5px solid transparent;
-  margin-bottom: -1px;
-  transition: color .15s, border-color .15s;
-  background: none;
-}
-.tab.active  { color: var(--blue); border-color: var(--blue); }
-.tab:hover   { color: var(--blue); }
-.tab-panel   { display: none; }
-.tab-panel.active { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); border-radius: 6px; overflow: hidden; }
+.bg-blue .t-h2  { color: var(--cream); }
+.bg-blue .t-body { color: rgba(255,251,248,.62); }
+.bg-teal .t-h2  { color: var(--cream); }
+.bg-teal .t-body { color: rgba(255,251,248,.7); }
 
-/* Community card */
-.c-card {
-  display: block;
-  background: var(--cream);
-  transition: background .18s;
-  position: relative;
-  overflow: hidden;
-}
-.c-card:hover { background: #F5F0EB; }
-.c-card-img {
-  aspect-ratio: 3/2;
-  overflow: hidden;
-  position: relative;
-}
-.c-card-img img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  transition: transform .4s ease;
-}
-.c-card:hover .c-card-img img { transform: scale(1.05); }
-.c-card-body { padding: 20px 22px 26px; }
-.c-region {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--teal);
-  margin-bottom: 6px;
-}
-.c-name {
-  font-size: 17px;
-  font-weight: 500;
-  letter-spacing: -.01em;
-  color: var(--blue);
-  margin-bottom: 6px;
-  line-height: 1.2;
-}
-.c-address {
-  font-size: 13px;
-  font-weight: 300;
-  color: var(--gray);
-  margin-bottom: 14px;
-  line-height: 1.4;
-}
-.c-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.c-phone {
-  font-size: 12px;
-  color: var(--gray);
-}
-.c-arrow {
-  font-size: 16px;
-  color: var(--teal);
-  transform: translateX(-4px);
-  opacity: 0;
-  transition: transform .2s, opacity .2s;
-}
-.c-card:hover .c-arrow { transform: translateX(0); opacity: 1; }
-
-/* ─── STATS BAR ───────────────────────────────────────── */
-.stats-section {
+/* ─── STATS ───────────────────────────────────────────── */
+.stats-wrap {
   background: var(--blue);
   padding: clamp(48px, 6vw, 80px) 0;
 }
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2px;
+  gap: 1px;
   background: rgba(255,251,248,.06);
-  border-radius: 4px;
-  overflow: hidden;
 }
-.stat-item {
-  background: rgba(255,251,248,.03);
-  padding: clamp(28px, 4vw, 48px) clamp(20px, 3vw, 40px);
+.stat {
+  background: rgba(255,251,248,.02);
+  padding: clamp(28px, 4vw, 48px) clamp(24px, 3vw, 44px);
 }
-.stat-number {
-  font-size: clamp(36px, 4vw, 60px);
+.stat-n {
+  font-size: clamp(40px, 4.5vw, 64px);
   font-weight: 500;
-  letter-spacing: -.03em;
+  letter-spacing: -0.03em;
   color: var(--cream);
   line-height: 1;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
-.stat-label {
-  font-size: 12px;
+.stat-l {
+  font-size: 11px;
   font-weight: 400;
-  letter-spacing: .06em;
+  letter-spacing: .08em;
   text-transform: uppercase;
-  color: rgba(255,251,248,.4);
-  line-height: 1.5;
+  color: rgba(255,251,248,.38);
+  line-height: 1.6;
 }
 
-/* ─── AWARDS SECTION ──────────────────────────────────── */
-.awards-section { background: var(--warm); }
+/* ─── COMMUNITIES ─────────────────────────────────────── */
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: clamp(36px, 5vw, 60px);
+  gap: 24px;
+}
+.section-head .t-eyebrow { margin-bottom: 12px; }
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2px;
+}
+.tab {
+  font-family: var(--ff);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .02em;
+  padding: 12px 0;
+  margin-right: 32px;
+  margin-bottom: -1px;
+  color: var(--gray);
+  cursor: pointer;
+  border-bottom: 1.5px solid transparent;
+  transition: color .15s, border-color .15s;
+  background: none;
+}
+.tab.active { color: var(--blue); border-color: var(--blue); }
+.tab:hover  { color: var(--blue); }
+
+.tab-panel { display: none; }
+.tab-panel.active {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+}
+
+/* Community card */
+.c-card {
+  display: block;
+  background: var(--cream);
+  transition: background .18s;
+}
+.c-card:hover { background: #F5F0EB; }
+.c-img {
+  aspect-ratio: 3/2;
+  overflow: hidden;
+  position: relative;
+  background: var(--teal-mid);
+}
+.c-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+.c-card:hover .c-img img { transform: scale(1.05); }
+.c-body { padding: 20px 22px 26px; }
+.c-region {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 5px;
+}
+.c-name {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -.01em;
+  color: var(--blue);
+  margin-bottom: 5px;
+  line-height: 1.25;
+}
+.c-address {
+  font-size: 12.5px;
+  font-weight: 400;
+  color: var(--gray);
+  margin-bottom: 14px;
+}
+.c-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.c-phone { font-size: 12px; color: var(--gray); }
+.c-arrow {
+  font-size: 15px;
+  color: var(--teal);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity .18s, transform .18s;
+}
+.c-card:hover .c-arrow { opacity: 1; transform: translateX(0); }
+
+/* ─── AWARDS STRIP ────────────────────────────────────── */
 .awards-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(40px, 6vw, 96px);
+  gap: clamp(40px, 7vw, 112px);
   align-items: center;
 }
 .awards-left .t-eyebrow { margin-bottom: 20px; }
-.awards-left .t-h2 { margin-bottom: 24px; }
-.awards-left .t-body { margin-bottom: 0; }
-.awards-right { display: flex; flex-direction: column; gap: 1px; background: rgba(5,44,55,.1); border-radius: 4px; overflow: hidden; }
-.award-item-row {
-  background: var(--warm);
-  padding: 24px 28px;
+.awards-left .t-h2      { margin-bottom: 24px; }
+.awards-right {
   display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: rgba(5,44,55,.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.award-row {
+  background: var(--warm);
+  padding: 22px 26px;
+  display: flex;
+  gap: 14px;
   align-items: flex-start;
-  gap: 16px;
 }
 .award-dot {
-  width: 6px; height: 6px;
+  width: 5px; height: 5px;
   border-radius: 50%;
   background: var(--teal);
   flex-shrink: 0;
-  margin-top: 7px;
+  margin-top: 8px;
 }
-.award-text { font-size: 14px; font-weight: 400; color: var(--blue); line-height: 1.55; }
-.award-text strong { font-weight: 500; }
-
-/* ─── SINGLE FAMILY ───────────────────────────────────── */
-/* Uses split-section pattern, reversed */
+.award-text {
+  font-size: 13.5px;
+  font-weight: 400;
+  color: var(--blue);
+  line-height: 1.55;
+}
+.award-text strong { font-weight: 600; }
 
 /* ─── LOCATIONS ───────────────────────────────────────── */
-.locations-section { background: var(--cream); }
-.locations-grid {
+.loc-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2px;
+  gap: 1px;
   background: var(--border);
-  border-radius: 4px;
+  border-radius: 3px;
   overflow: hidden;
   margin-top: 48px;
 }
 .loc {
+  display: block;
   background: var(--cream);
-  padding: 32px 28px;
-  cursor: pointer;
-  transition: background .18s;
+  padding: 32px 26px;
   position: relative;
+  transition: background .18s;
 }
 .loc:hover { background: #EAF2F2; }
-.loc-region { font-size: 9.5px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--gray); margin-bottom: 8px; }
-.loc-name { font-size: 20px; font-weight: 500; letter-spacing: -.01em; color: var(--blue); margin-bottom: 10px; }
-.loc-detail { font-size: 13px; font-weight: 300; color: var(--gray); line-height: 1.5; }
-.loc-arrow { position: absolute; top: 32px; right: 28px; font-size: 17px; color: var(--teal); opacity: 0; transform: translateX(-6px); transition: opacity .18s, transform .18s; }
+.loc-region {
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 8px;
+}
+.loc-name {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -.01em;
+  margin-bottom: 10px;
+}
+.loc-detail { font-size: 13px; font-weight: 400; color: var(--gray); line-height: 1.5; }
+.loc-arrow {
+  position: absolute;
+  top: 32px; right: 26px;
+  font-size: 16px;
+  color: var(--teal);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity .18s, transform .18s;
+}
 .loc:hover .loc-arrow { opacity: 1; transform: translateX(0); }
 
 /* ─── CTA SECTION ─────────────────────────────────────── */
-.cta-section {
-  background: var(--teal);
-  padding: clamp(72px, 9vw, 120px) 0;
-}
 .cta-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -496,33 +504,40 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
 }
 .cta-inner .t-eyebrow { margin-bottom: 20px; }
 .cta-inner .t-h2 { color: var(--cream); }
-.cta-right { display: flex; flex-direction: column; gap: 20px; align-items: flex-start; }
-.cta-right .t-body-cream { font-size: 17px; }
+.cta-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+.cta-body {
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: rgba(255,251,248,.62);
+}
 
 /* ─── FOOTER ──────────────────────────────────────────── */
-footer {
-  background: var(--blue);
-  padding: clamp(48px, 6vw, 80px) 0 32px;
-}
+footer { background: var(--blue); padding: clamp(48px,6vw,80px) 0 32px; }
 .footer-top {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 48px;
-  margin-bottom: 56px;
+  margin-bottom: 48px;
   padding-bottom: 48px;
   border-bottom: 1px solid rgba(255,251,248,.08);
 }
-.footer-logo-mark { font-size: 16px; font-weight: 700; letter-spacing: .08em; color: var(--cream); }
-.footer-logo-sub  { font-size: 7.5px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,251,248,.3); margin-top: 3px; margin-bottom: 20px; }
-.footer-brand p { font-size: 13px; font-weight: 300; color: rgba(255,251,248,.5); line-height: 1.7; max-width: 280px; margin-bottom: 24px; }
-.footer-social { display: flex; gap: 10px; }
-.soc { width: 34px; height: 34px; border-radius: 2px; border: 1px solid rgba(255,251,248,.12); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; color: rgba(255,251,248,.4); transition: border-color .15s, color .15s; }
+.f-logo-mark { font-size: 16px; font-weight: 600; letter-spacing: .08em; color: var(--cream); }
+.f-logo-sub  { font-size: 7.5px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,251,248,.3); margin-top: 3px; margin-bottom: 20px; }
+.f-brand p   { font-size: 13px; font-weight: 400; color: rgba(255,251,248,.45); line-height: 1.7; max-width: 280px; margin-bottom: 24px; }
+.f-social { display: flex; gap: 10px; }
+.soc { width: 34px; height: 34px; border-radius: 2px; border: 1px solid rgba(255,251,248,.12); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; color: rgba(255,251,248,.38); transition: border-color .15s, color .15s; }
 .soc:hover { border-color: rgba(255,251,248,.4); color: var(--cream); }
-.footer-col h4 { font-size: 10px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,251,248,.25); margin-bottom: 18px; }
-.footer-col ul { list-style: none; }
-.footer-col li { margin-bottom: 10px; }
-.footer-col a { font-size: 13px; font-weight: 300; color: rgba(255,251,248,.5); transition: color .15s; }
-.footer-col a:hover { color: var(--cream); }
+.f-col h4 { font-size: 10px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,251,248,.24); margin-bottom: 18px; }
+.f-col ul { list-style: none; }
+.f-col li { margin-bottom: 10px; }
+.f-col a  { font-size: 13px; font-weight: 400; color: rgba(255,251,248,.48); transition: color .15s; }
+.f-col a:hover { color: var(--cream); }
 .footer-bottom {
   display: flex;
   align-items: flex-start;
@@ -530,77 +545,95 @@ footer {
   gap: 24px;
   flex-wrap: wrap;
 }
-.footer-legal { font-size: 11px; font-weight: 300; color: rgba(255,251,248,.25); line-height: 1.8; max-width: 780px; }
-.footer-legal p + p { margin-top: 8px; }
-.footer-links { display: flex; gap: 20px; flex-shrink: 0; }
-.footer-links a { font-size: 11.5px; color: rgba(255,251,248,.3); transition: color .15s; }
-.footer-links a:hover { color: rgba(255,251,248,.7); }
+.f-legal { font-size: 11px; font-weight: 400; color: rgba(255,251,248,.24); line-height: 1.8; max-width: 780px; }
+.f-legal p + p { margin-top: 6px; }
+.f-links { display: flex; gap: 20px; flex-shrink: 0; }
+.f-links a { font-size: 11.5px; color: rgba(255,251,248,.28); transition: color .15s; }
+.f-links a:hover { color: rgba(255,251,248,.7); }
 
 /* ─── RESPONSIVE ──────────────────────────────────────── */
 @media (max-width: 1024px) {
   .mission-inner,
   .awards-grid,
   .cta-inner { grid-template-columns: 1fr; }
-  .split-section { grid-template-columns: 1fr; }
-  .split-img { min-height: 380px; }
-  .split-section.reverse .split-img { order: -1; }
+  .split { grid-template-columns: 1fr; }
+  .split-img { min-height: 400px; order: -1; }
+  .split.img-right .split-img { order: 1; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
-  .locations-grid { grid-template-columns: 1fr 1fr; }
+  .loc-grid { grid-template-columns: 1fr 1fr; }
   .tab-panel.active { grid-template-columns: 1fr 1fr; }
   .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
 }
-@media (max-width: 720px) {
+@media (max-width: 680px) {
   .nav-links { display: none; }
-  .hero-content .t-h1 { font-size: clamp(36px, 10vw, 52px); }
   .tab-panel.active { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
-  .locations-grid { grid-template-columns: 1fr 1fr; }
+  .loc-grid { grid-template-columns: 1fr 1fr; }
   .footer-top { grid-template-columns: 1fr; }
-  .awards-grid { grid-template-columns: 1fr; }
   .section-head { flex-direction: column; align-items: flex-start; }
   .hero-actions { flex-direction: column; align-items: flex-start; gap: 16px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; animation: none !important; }
+  * { transition: none !important; }
 }
 </style>
 </head>
 <body>
 
-<!-- ═══ NAV ════════════════════════════════════════════ -->
+<!-- NAV ───────────────────────────────────────────────── -->
 <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="/" class="logo" aria-label="Lewis Apartments">
-      <span class="logo-mark">LEWIS</span>
-      <span class="logo-sub">Apartments</span>
+    <!-- Lewis Group of Companies wordmark SVG — matches the parent site exactly -->
+    <a href="https://lewisgroupofcompanies.com" class="logo" aria-label="Lewis Group of Companies">
+      <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- LEWIS bold wordmark -->
+        <text x="0" y="20"
+          font-family="'Haffer SQ', sans-serif"
+          font-weight="600"
+          font-size="20"
+          letter-spacing="0.04em"
+          class="logo-main">LEWIS</text>
+        <!-- GROUP OF COMPANIES sub in small caps -->
+        <text x="0" y="30"
+          font-family="'Haffer SQ', sans-serif"
+          font-weight="400"
+          font-size="7"
+          letter-spacing="0.18em"
+          class="logo-sub">GROUP OF COMPANIES</text>
+      </svg>
     </a>
+
     <ul class="nav-links" role="list">
       <li><a href="#communities">Our communities</a></li>
       <li><a href="#single-family">Single family homes</a></li>
       <li><a href="/about-us">About us</a></li>
       <li><a href="https://blog.lewisapartments.com" target="_blank" rel="noopener">Blog</a></li>
       <li><a href="/contact-us">Contact us</a></li>
-      <li><a href="/resident-corner">Resident's corner</a></li>
+      <li><a href="/resident-corner">Residents</a></li>
     </ul>
   </div>
 </nav>
 
-<!-- ═══ HERO — full bleed, text bottom-left ════════════ -->
+<!-- HERO ──────────────────────────────────────────────── -->
 <section class="hero" aria-label="Hero">
   <div class="hero-bg">
+    <!-- Full-res hero image — largest available size from lewisapartments.com CDN -->
     <img
-      src="https://www.lewisapartments.com/uploads/images/images/307x194h/813043/HCTV_Pool5_10.2025.jpg"
-      alt="Lewis apartment community"
+      src="https://www.lewisapartments.com/uploads/images/images/1200x800h/813043/HCTV_Pool5_10.2025.jpg"
+      srcset="
+        https://www.lewisapartments.com/uploads/images/images/800x500h/813043/HCTV_Pool5_10.2025.jpg 800w,
+        https://www.lewisapartments.com/uploads/images/images/1200x800h/813043/HCTV_Pool5_10.2025.jpg 1200w"
+      sizes="100vw"
+      alt="Homecoming at Terra Vista pool"
       loading="eager"
-      onerror="this.style.display='none'"
+      fetchpriority="high"
+      onerror="this.src='https://www.lewisapartments.com/uploads/images/images/400x300h/813043/HCTV_Pool5_10.2025.jpg'"
     >
   </div>
   <div class="hero-content wrap">
     <p class="t-eyebrow t-eyebrow-cream">Lewis Apartments</p>
     <h1 class="t-h1">Where your life becomes<br>the good life.</h1>
-    <p class="t-body" style="color:rgba(255,251,248,.7);max-width:480px;margin-bottom:44px;">
-      We develop and manage apartment communities where thoughtful design and genuine care make all the difference — in California and Nevada.
-    </p>
+    <p class="t-body">We develop and manage apartment communities across California and Nevada — where thoughtful design and genuine care make all the difference.</p>
     <div class="hero-actions">
       <a href="#communities" class="btn btn-cream">View our communities</a>
       <a href="/contact-us" class="cta-link cta-link-cream">Contact us</a>
@@ -608,215 +641,206 @@ footer {
   </div>
 </section>
 
-<!-- ═══ MISSION ══════════════════════════════════════════ -->
-<section class="section mission-section" aria-labelledby="mission-h">
+<!-- MISSION ────────────────────────────────────────────── -->
+<section class="section" style="background:var(--cream);" aria-labelledby="mission-h">
   <div class="wrap">
     <div class="mission-inner">
-      <div class="mission-left">
+      <div>
         <p class="t-eyebrow">Our mission</p>
         <h2 class="t-h2" id="mission-h">Better communities.<br>Better lives.</h2>
       </div>
-      <div class="mission-right">
-        <p class="t-body">
-          With more than 13,000 apartment homes in our portfolio, we remain a leader in the development and management of high-quality residential communities. We take a community-first approach — designing spaces where people genuinely want to live, and staying invested in them long after the last unit is leased.
-        </p>
+      <div>
+        <p class="t-body">With more than 13,000 apartment homes in our portfolio, we remain a leader in the development and management of high-quality residential communities. We take a community-first approach — designing spaces where people genuinely want to live, and staying invested in them long after opening day.</p>
+        <br><br>
         <a href="/about-us" class="cta-link cta-link-teal">Who we are</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ SPLIT — Awards (image left, cream content right) ══ -->
-<section class="split-section" aria-labelledby="awards-h">
+<!-- SPLIT — Recognition, image left ────────────────────── -->
+<section class="split" aria-labelledby="recog-h">
   <div class="split-img">
     <img
-      src="https://www.lewisapartments.com/uploads/images/images/307x194h/809871/Sunscape_Pool4_9.2025.jpg"
-      alt="Sunscape community pool, Alta Loma"
+      src="https://www.lewisapartments.com/uploads/images/images/1200x800h/809871/Sunscape_Pool4_9.2025.jpg"
+      srcset="
+        https://www.lewisapartments.com/uploads/images/images/800x500h/809871/Sunscape_Pool4_9.2025.jpg 800w,
+        https://www.lewisapartments.com/uploads/images/images/1200x800h/809871/Sunscape_Pool4_9.2025.jpg 1200w"
+      sizes="50vw"
+      alt="Sunscape community, Alta Loma"
       loading="lazy"
-      onerror="this.style.display='none'"
+      onerror="this.src='https://www.lewisapartments.com/uploads/images/images/400x300h/809871/Sunscape_Pool4_9.2025.jpg'"
     >
   </div>
-  <div class="split-content cream-bg">
+  <div class="split-content bg-cream">
     <p class="t-eyebrow">Recognition</p>
-    <h2 class="t-h2" id="awards-h">19 years of<br>service excellence.</h2>
-    <p class="t-body">
-      We are proud to have earned the National Multifamily Housing Council's Excellence in Customer Service Award for 19 consecutive years — a reflection of our residents' trust and our teams' commitment.
-    </p>
+    <h2 class="t-h2" id="recog-h">19 years of service excellence.</h2>
+    <p class="t-body">We are proud to have earned the National Multifamily Housing Council's Excellence in Customer Service Award for 19 consecutive years — a reflection of our residents' trust and our teams' commitment.</p>
     <a href="/about-us" class="cta-link cta-link-teal">Our story</a>
   </div>
 </section>
 
-<!-- ═══ STATS ═════════════════════════════════════════════ -->
-<section class="stats-section" aria-label="Lewis by the numbers">
+<!-- STATS ──────────────────────────────────────────────── -->
+<div class="stats-wrap" aria-label="Lewis by the numbers">
   <div class="wrap">
     <div class="stats-grid">
-      <div class="stat-item">
-        <div class="stat-number">13k+</div>
-        <div class="stat-label">Apartment homes<br>under management</div>
+      <div class="stat">
+        <div class="stat-n">13k+</div>
+        <div class="stat-l">Apartment homes<br>under management</div>
       </div>
-      <div class="stat-item">
-        <div class="stat-number">19</div>
-        <div class="stat-label">Consecutive years,<br>Customer Service Award</div>
+      <div class="stat">
+        <div class="stat-n">19</div>
+        <div class="stat-l">Consecutive years,<br>Customer Service Award</div>
       </div>
-      <div class="stat-item">
-        <div class="stat-number">40+</div>
-        <div class="stat-label">Years developing<br>California communities</div>
+      <div class="stat">
+        <div class="stat-n">40+</div>
+        <div class="stat-l">Years developing<br>California communities</div>
       </div>
-      <div class="stat-item">
-        <div class="stat-number">2</div>
-        <div class="stat-label">States — California<br>and Nevada</div>
+      <div class="stat">
+        <div class="stat-n">2</div>
+        <div class="stat-l">States — California<br>and Nevada</div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- ═══ COMMUNITIES ═══════════════════════════════════════ -->
-<section class="section communities-section" id="communities" aria-labelledby="comm-h">
+<!-- COMMUNITIES ────────────────────────────────────────── -->
+<section class="section" style="background:var(--cream);" id="communities" aria-labelledby="comm-h">
   <div class="wrap">
     <div class="section-head">
       <div>
         <p class="t-eyebrow">Our communities</p>
         <h2 class="t-h2" id="comm-h">Find the right home.</h2>
       </div>
-      <a href="/our-communities" class="cta-link cta-link-teal">View all communities</a>
+      <a href="/our-communities" class="cta-link cta-link-teal">All communities</a>
     </div>
 
-    <div class="tabs" role="tablist" aria-label="Communities by state">
+    <div class="tabs" role="tablist">
       <button class="tab active" role="tab" aria-selected="true"  aria-controls="tab-ca" onclick="switchTab('ca',this)">California</button>
       <button class="tab"        role="tab" aria-selected="false" aria-controls="tab-nv" onclick="switchTab('nv',this)">Nevada</button>
     </div>
 
-    <!-- CALIFORNIA -->
+    <!-- CA -->
     <div class="tab-panel active" id="tab-ca" role="tabpanel">
       <a href="https://www.lewisapartments.com/sunscape-apts-alta-loma-ca" class="c-card" target="_blank" rel="noopener">
-        <div class="c-card-img"><img src="https://www.lewisapartments.com/uploads/images/images/307x194h/809871/Sunscape_Pool4_9.2025.jpg" alt="Sunscape" loading="lazy" onerror="this.parentElement.style.background='#a3c4c4'"></div>
-        <div class="c-card-body"><div class="c-region">Alta Loma</div><div class="c-name">Sunscape</div><div class="c-address">8840 19th Street, Alta Loma, CA 91701</div><div class="c-footer"><span class="c-phone">(909) 404-7577</span><span class="c-arrow">→</span></div></div>
+        <div class="c-img"><img src="https://www.lewisapartments.com/uploads/images/images/640x400h/809871/Sunscape_Pool4_9.2025.jpg" alt="Sunscape" loading="lazy" onerror="this.src='https://www.lewisapartments.com/uploads/images/images/307x194h/809871/Sunscape_Pool4_9.2025.jpg'"></div>
+        <div class="c-body"><div class="c-region">Alta Loma</div><div class="c-name">Sunscape</div><div class="c-address">8840 19th Street, Alta Loma, CA 91701</div><div class="c-foot"><span class="c-phone">(909) 404-7577</span><span class="c-arrow">→</span></div></div>
       </a>
       <a href="https://www.lewisapartments.com/antelope-ridge-antelope-ca" class="c-card" target="_blank" rel="noopener">
-        <div class="c-card-img"><img src="https://d31itegtepnisb.cloudfront.net/uploads/image/image/640052/307x194h_Antelope_Ridge.jpg" alt="Antelope Ridge" loading="lazy" onerror="this.parentElement.style.background='#93b8b8'"></div>
-        <div class="c-card-body"><div class="c-region">Antelope</div><div class="c-name">Antelope Ridge</div><div class="c-address">4400 Shandwick Drive, Antelope, CA 95843</div><div class="c-footer"><span class="c-phone">(916) 907-6052</span><span class="c-arrow">→</span></div></div>
+        <div class="c-img"><img src="https://d31itegtepnisb.cloudfront.net/uploads/image/image/640052/307x194h_Antelope_Ridge.jpg" alt="Antelope Ridge" loading="lazy"></div>
+        <div class="c-body"><div class="c-region">Antelope</div><div class="c-name">Antelope Ridge</div><div class="c-address">4400 Shandwick Drive, Antelope, CA 95843</div><div class="c-foot"><span class="c-phone">(916) 907-6052</span><span class="c-arrow">→</span></div></div>
       </a>
       <a href="https://www.lewisapartments.com/homecoming-at-the-preserve-chino-ca" class="c-card" target="_blank" rel="noopener">
-        <div class="c-card-img"><img src="https://www.lewisapartments.com/uploads/images/images/307x194h/743282/Clubhouse_exterior.jpg" alt="Homecoming at The Preserve" loading="lazy" onerror="this.parentElement.style.background='#88b4b4'"></div>
-        <div class="c-card-body"><div class="c-region">Chino</div><div class="c-name">Homecoming at The Preserve</div><div class="c-address">16250 Homecoming Drive, Chino, CA 91708</div><div class="c-footer"><span class="c-phone">(909) 404-7635</span><span class="c-arrow">→</span></div></div>
+        <div class="c-img"><img src="https://www.lewisapartments.com/uploads/images/images/640x400h/743282/Clubhouse_exterior.jpg" alt="Homecoming at The Preserve" loading="lazy" onerror="this.src='https://www.lewisapartments.com/uploads/images/images/307x194h/743282/Clubhouse_exterior.jpg'"></div>
+        <div class="c-body"><div class="c-region">Chino</div><div class="c-name">Homecoming at The Preserve</div><div class="c-address">16250 Homecoming Drive, Chino, CA 91708</div><div class="c-foot"><span class="c-phone">(909) 404-7635</span><span class="c-arrow">→</span></div></div>
       </a>
       <a href="https://www.lewisapartments.com/independence-at-the-preserve-chino-ca/" class="c-card" target="_blank" rel="noopener">
-        <div class="c-card-img"><img src="https://www.lewisapartments.com/uploads/images/images/307x194h/788414/IAP_Pool3_12.2024.jpg" alt="Independence at The Preserve" loading="lazy" onerror="this.parentElement.style.background='#7aadad'"></div>
-        <div class="c-card-body"><div class="c-region">Chino</div><div class="c-name">Independence at The Preserve</div><div class="c-address">8400 Legacy Park Street, Chino, CA 91708</div><div class="c-footer"><span class="c-phone">(951) 561-4204</span><span class="c-arrow">→</span></div></div>
+        <div class="c-img"><img src="https://www.lewisapartments.com/uploads/images/images/640x400h/788414/IAP_Pool3_12.2024.jpg" alt="Independence at The Preserve" loading="lazy" onerror="this.src='https://www.lewisapartments.com/uploads/images/images/307x194h/788414/IAP_Pool3_12.2024.jpg'"></div>
+        <div class="c-body"><div class="c-region">Chino</div><div class="c-name">Independence at The Preserve</div><div class="c-address">8400 Legacy Park Street, Chino, CA 91708</div><div class="c-foot"><span class="c-phone">(951) 561-4204</span><span class="c-arrow">→</span></div></div>
       </a>
       <a href="https://www.lewisapartments.com/green-valley-apartments-chino-hills-ca" class="c-card" target="_blank" rel="noopener">
-        <div class="c-card-img"><img src="https://www.lewisapartments.com/uploads/images/images/307x194h/798018/Green_Valley_Pool2_4.25.jpg" alt="Green Valley" loading="lazy" onerror="this.parentElement.style.background='#88b4b4'"></div>
-        <div class="c-card-body"><div class="c-region">Chino Hills</div><div class="c-name">Green Valley</div><div class="c-address">14901 Frost Avenue, Chino Hills, CA 91709</div><div class="c-footer"><span class="c-phone">(909) 404-7795</span><span class="c-arrow">→</span></div></div>
+        <div class="c-img"><img src="https://www.lewisapartments.com/uploads/images/images/640x400h/798018/Green_Valley_Pool2_4.25.jpg" alt="Green Valley" loading="lazy" onerror="this.src='https://www.lewisapartments.com/uploads/images/images/307x194h/798018/Green_Valley_Pool2_4.25.jpg'"></div>
+        <div class="c-body"><div class="c-region">Chino Hills</div><div class="c-name">Green Valley</div><div class="c-address">14901 Frost Avenue, Chino Hills, CA 91709</div><div class="c-foot"><span class="c-phone">(909) 404-7795</span><span class="c-arrow">→</span></div></div>
       </a>
       <a href="https://www.lewisapartments.com/santa-barbara-in-chino-hills-chino-hills-ca" class="c-card" target="_blank" rel="noopener">
-        <div class="c-card-img"><img src="https://www.lewisapartments.com/uploads/images/images/307x194h/795459/Santa_Barbara_Chino_Hills_Our_Communities_Banner_Top_Rated.jpg" alt="Santa Barbara in Chino Hills" loading="lazy" onerror="this.parentElement.style.background='#65a2a2'"></div>
-        <div class="c-card-body"><div class="c-region">Chino Hills</div><div class="c-name">Santa Barbara in Chino Hills</div><div class="c-address">15920 Pomona Rincon Road, Chino Hills, CA 91709</div><div class="c-footer"><span class="c-phone">(909) 404-7973</span><span class="c-arrow">→</span></div></div>
+        <div class="c-img"><img src="https://www.lewisapartments.com/uploads/images/images/640x400h/795459/Santa_Barbara_Chino_Hills_Our_Communities_Banner_Top_Rated.jpg" alt="Santa Barbara in Chino Hills" loading="lazy" onerror="this.src='https://www.lewisapartments.com/uploads/images/images/307x194h/795459/Santa_Barbara_Chino_Hills_Our_Communities_Banner_Top_Rated.jpg'"></div>
+        <div class="c-body"><div class="c-region">Chino Hills</div><div class="c-name">Santa Barbara in Chino Hills</div><div class="c-address">15920 Pomona Rincon Road, Chino Hills, CA 91709</div><div class="c-foot"><span class="c-phone">(909) 404-7973</span><span class="c-arrow">→</span></div></div>
       </a>
       <a href="https://www.lewisapartments.com/village-green-senior-covina-ca" class="c-card" target="_blank" rel="noopener">
-        <div class="c-card-img"><img src="https://www.lewisapartments.com/uploads/images/images/307x194h/263583/LMC_VillageGreen_Spa2-Bubbles_1285a-11x8.jpg" alt="Village Green" loading="lazy" onerror="this.parentElement.style.background='#8bbaba'"></div>
-        <div class="c-card-body"><div class="c-region">Covina</div><div class="c-name">Village Green</div><div class="c-address">152 East Covina Boulevard, Covina, CA 91722</div><div class="c-footer"><span class="c-phone">(626) 772-6959</span><span class="c-arrow">→</span></div></div>
+        <div class="c-img"><img src="https://www.lewisapartments.com/uploads/images/images/640x400h/263583/LMC_VillageGreen_Spa2-Bubbles_1285a-11x8.jpg" alt="Village Green" loading="lazy" onerror="this.src='https://www.lewisapartments.com/uploads/images/images/307x194h/263583/LMC_VillageGreen_Spa2-Bubbles_1285a-11x8.jpg'"></div>
+        <div class="c-body"><div class="c-region">Covina</div><div class="c-name">Village Green</div><div class="c-address">152 East Covina Boulevard, Covina, CA 91722</div><div class="c-foot"><span class="c-phone">(626) 772-6959</span><span class="c-arrow">→</span></div></div>
       </a>
       <a href="https://www.lewisapartments.com/independence-in-dixon-dixon-ca" class="c-card" target="_blank" rel="noopener">
-        <div class="c-card-img"><img src="https://www.lewisapartments.com/uploads/images/images/307x194h/820269/IID_Bldg_7_02.2026.jpg" alt="Independence in Dixon" loading="lazy" onerror="this.parentElement.style.background='#7aadad'"></div>
-        <div class="c-card-body"><div class="c-region">Dixon</div><div class="c-name">Independence in Dixon</div><div class="c-address">1905 N 1st Street, Dixon, CA 95620</div><div class="c-footer"><span class="c-phone">(707) 723-0843</span><span class="c-arrow">→</span></div></div>
+        <div class="c-img"><img src="https://www.lewisapartments.com/uploads/images/images/640x400h/820269/IID_Bldg_7_02.2026.jpg" alt="Independence in Dixon" loading="lazy" onerror="this.src='https://www.lewisapartments.com/uploads/images/images/307x194h/820269/IID_Bldg_7_02.2026.jpg'"></div>
+        <div class="c-body"><div class="c-region">Dixon</div><div class="c-name">Independence in Dixon</div><div class="c-address">1905 N 1st Street, Dixon, CA 95620</div><div class="c-foot"><span class="c-phone">(707) 723-0843</span><span class="c-arrow">→</span></div></div>
       </a>
       <a href="https://www.lewisapartments.com/homecoming-at-eastvale-eastvale-ca" class="c-card" target="_blank" rel="noopener">
-        <div class="c-card-img"><img src="https://www.lewisapartments.com/uploads/images/images/307x194h/205289/Townhomes.jpg" alt="Homecoming at Eastvale" loading="lazy" onerror="this.parentElement.style.background='#93b8b8'"></div>
-        <div class="c-card-body"><div class="c-region">Eastvale</div><div class="c-name">Homecoming at Eastvale</div><div class="c-address">5464 West Homecoming Circle, Eastvale, CA 91752</div><div class="c-footer"><span class="c-phone">(951) 612-8913</span><span class="c-arrow">→</span></div></div>
+        <div class="c-img"><img src="https://www.lewisapartments.com/uploads/images/images/640x400h/205289/Townhomes.jpg" alt="Homecoming at Eastvale" loading="lazy" onerror="this.src='https://www.lewisapartments.com/uploads/images/images/307x194h/205289/Townhomes.jpg'"></div>
+        <div class="c-body"><div class="c-region">Eastvale</div><div class="c-name">Homecoming at Eastvale</div><div class="c-address">5464 West Homecoming Circle, Eastvale, CA 91752</div><div class="c-foot"><span class="c-phone">(951) 612-8913</span><span class="c-arrow">→</span></div></div>
       </a>
       <a href="https://www.lewisapartments.com/sycamore-park-ontario-ca" class="c-card" target="_blank" rel="noopener">
-        <div class="c-card-img"><img src="https://www.lewisapartments.com/uploads/images/images/307x194h/760335/Sycamore_Park_Pool_Spa4_10.2023.jpg" alt="Sycamore Park" loading="lazy" onerror="this.parentElement.style.background='#88b4b4'"></div>
-        <div class="c-card-body"><div class="c-region">Ontario</div><div class="c-name">Sycamore Park</div><div class="c-address">1221 North Vineyard Avenue, Ontario, CA 91764</div><div class="c-footer"><span class="c-phone">(909) 404-7712</span><span class="c-arrow">→</span></div></div>
+        <div class="c-img"><img src="https://www.lewisapartments.com/uploads/images/images/640x400h/760335/Sycamore_Park_Pool_Spa4_10.2023.jpg" alt="Sycamore Park" loading="lazy" onerror="this.src='https://www.lewisapartments.com/uploads/images/images/307x194h/760335/Sycamore_Park_Pool_Spa4_10.2023.jpg'"></div>
+        <div class="c-body"><div class="c-region">Ontario</div><div class="c-name">Sycamore Park</div><div class="c-address">1221 North Vineyard Avenue, Ontario, CA 91764</div><div class="c-foot"><span class="c-phone">(909) 404-7712</span><span class="c-arrow">→</span></div></div>
       </a>
       <a href="https://www.lewisapartments.com/carmel-at-terra-vista-rancho-cucamonga-ca" class="c-card" target="_blank" rel="noopener">
-        <div class="c-card-img"><img src="https://www.lewisapartments.com/uploads/images/images/307x194h/758811/CTV_Spa3_9.2023.jpg" alt="Carmel at Terra Vista" loading="lazy" onerror="this.parentElement.style.background='#7aadad'"></div>
-        <div class="c-card-body"><div class="c-region">Rancho Cucamonga</div><div class="c-name">Carmel at Terra Vista</div><div class="c-address">10850 Church Street, Rancho Cucamonga, CA 91730</div><div class="c-footer"><span class="c-phone">(909) 326-6079</span><span class="c-arrow">→</span></div></div>
+        <div class="c-img"><img src="https://www.lewisapartments.com/uploads/images/images/640x400h/758811/CTV_Spa3_9.2023.jpg" alt="Carmel at Terra Vista" loading="lazy" onerror="this.src='https://www.lewisapartments.com/uploads/images/images/307x194h/758811/CTV_Spa3_9.2023.jpg'"></div>
+        <div class="c-body"><div class="c-region">Rancho Cucamonga</div><div class="c-name">Carmel at Terra Vista</div><div class="c-address">10850 Church Street, Rancho Cucamonga, CA 91730</div><div class="c-foot"><span class="c-phone">(909) 326-6079</span><span class="c-arrow">→</span></div></div>
       </a>
       <a href="https://www.lewisapartments.com/del-mar-apartments-rancho-cucamonga-ca" class="c-card" target="_blank" rel="noopener">
-        <div class="c-card-img"><img src="https://www.lewisapartments.com/uploads/images/images/307x194h/767378/Del_Mar_Pool1_1.2024.jpg" alt="Del Mar" loading="lazy" onerror="this.parentElement.style.background='#88b4b4'"></div>
-        <div class="c-card-body"><div class="c-region">Rancho Cucamonga</div><div class="c-name">Del Mar</div><div class="c-address">7868 Milliken Avenue, Rancho Cucamonga, CA 91730</div><div class="c-footer"><span class="c-phone">(909) 345-8290</span><span class="c-arrow">→</span></div></div>
+        <div class="c-img"><img src="https://www.lewisapartments.com/uploads/images/images/640x400h/767378/Del_Mar_Pool1_1.2024.jpg" alt="Del Mar" loading="lazy" onerror="this.src='https://www.lewisapartments.com/uploads/images/images/307x194h/767378/Del_Mar_Pool1_1.2024.jpg'"></div>
+        <div class="c-body"><div class="c-region">Rancho Cucamonga</div><div class="c-name">Del Mar</div><div class="c-address">7868 Milliken Avenue, Rancho Cucamonga, CA 91730</div><div class="c-foot"><span class="c-phone">(909) 345-8290</span><span class="c-arrow">→</span></div></div>
       </a>
       <a href="https://www.lewisapartments.com/evergreen-apts-rancho-cucamonga-ca" class="c-card" target="_blank" rel="noopener">
-        <div class="c-card-img"><img src="https://www.lewisapartments.com/uploads/images/images/307x194h/207713/Play_area.jpg" alt="Evergreen" loading="lazy" onerror="this.parentElement.style.background='#65a2a2'"></div>
-        <div class="c-card-body"><div class="c-region">Rancho Cucamonga</div><div class="c-name">Evergreen</div><div class="c-address">10730 Church Street, Rancho Cucamonga, CA 91730</div><div class="c-footer"><span class="c-phone">(909) 362-8227</span><span class="c-arrow">→</span></div></div>
+        <div class="c-img"><img src="https://www.lewisapartments.com/uploads/images/images/640x400h/207713/Play_area.jpg" alt="Evergreen" loading="lazy" onerror="this.src='https://www.lewisapartments.com/uploads/images/images/307x194h/207713/Play_area.jpg'"></div>
+        <div class="c-body"><div class="c-region">Rancho Cucamonga</div><div class="c-name">Evergreen</div><div class="c-address">10730 Church Street, Rancho Cucamonga, CA 91730</div><div class="c-foot"><span class="c-phone">(909) 362-8227</span><span class="c-arrow">→</span></div></div>
       </a>
     </div>
 
-    <!-- NEVADA -->
+    <!-- NV -->
     <div class="tab-panel" id="tab-nv" role="tabpanel">
       <a href="https://www.lewisapartments.com/esprit-reno-nv" class="c-card" target="_blank" rel="noopener">
-        <div class="c-card-img" style="background:linear-gradient(145deg,#2a7070,#0f4a4a);min-height:180px;display:flex;align-items:center;justify-content:center;"><span style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,251,248,.25);">Photography</span></div>
-        <div class="c-card-body"><div class="c-region">Reno</div><div class="c-name">Esprit</div><div class="c-address">Reno, NV</div><div class="c-footer"><span class="c-phone">Virtual tours available</span><span class="c-arrow">→</span></div></div>
+        <div class="c-img" style="background:linear-gradient(145deg,#2a7070,#0f4a4a);min-height:200px;"></div>
+        <div class="c-body"><div class="c-region">Reno</div><div class="c-name">Esprit</div><div class="c-address">Reno, NV</div><div class="c-foot"><span class="c-phone">Virtual tours available</span><span class="c-arrow">→</span></div></div>
       </a>
       <a href="https://www.lewisapartments.com/our-communities" class="c-card" target="_blank" rel="noopener">
-        <div class="c-card-img" style="background:linear-gradient(145deg,#1d5858,#0a3838);min-height:180px;display:flex;align-items:center;justify-content:center;"><span style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,251,248,.25);">Photography</span></div>
-        <div class="c-card-body"><div class="c-region">Las Vegas</div><div class="c-name">Las Vegas communities</div><div class="c-address">Multiple Las Vegas locations</div><div class="c-footer"><span class="c-phone">View all</span><span class="c-arrow">→</span></div></div>
+        <div class="c-img" style="background:linear-gradient(145deg,#1d5858,#0a3838);min-height:200px;"></div>
+        <div class="c-body"><div class="c-region">Las Vegas</div><div class="c-name">Las Vegas communities</div><div class="c-address">Multiple Las Vegas locations</div><div class="c-foot"><span class="c-phone">View all</span><span class="c-arrow">→</span></div></div>
       </a>
     </div>
   </div>
 </section>
 
-<!-- ═══ AWARDS — warm beige ══════════════════════════════ -->
-<section class="section awards-section" aria-labelledby="awards2-h">
+<!-- AWARDS ─────────────────────────────────────────────── -->
+<section class="section" style="background:var(--warm);" aria-labelledby="awards-h">
   <div class="wrap">
     <div class="awards-grid">
-      <div class="awards-left">
+      <div>
         <p class="t-eyebrow">Resident experience</p>
-        <h2 class="t-h2" id="awards2-h">What our residents<br>say about us.</h2>
-        <p class="t-body">Our residents' positive reviews and surveys inspire us every day. We measure success by the communities we build — and the people who choose to call them home.</p>
+        <h2 class="t-h2" id="awards-h">Recognised for what matters most.</h2>
+        <p class="t-body">Our residents' reviews and satisfaction surveys are what drive us. Every award we've received is a reflection of the people who choose to call our communities home.</p>
       </div>
       <div class="awards-right">
-        <div class="award-item-row"><span class="award-dot"></span><span class="award-text"><strong>National Multifamily Excellence in Customer Service Award</strong> — 19 consecutive years</span></div>
-        <div class="award-item-row"><span class="award-dot"></span><span class="award-text"><strong>TALi Award Winner 2025</strong> — Outstanding Resident Loyalty & Satisfaction</span></div>
-        <div class="award-item-row"><span class="award-dot"></span><span class="award-text">Ranked among the <strong>top 1% nationally for online reputation</strong> — Harvest in Tracy, Santa Barbara Chino Hills, The Enclave, Homecoming at The Resort</span></div>
-        <div class="award-item-row"><span class="award-dot"></span><span class="award-text">Thoughtfully designed communities throughout <strong>California and Nevada</strong></span></div>
+        <div class="award-row"><span class="award-dot"></span><span class="award-text"><strong>National Multifamily Excellence in Customer Service Award</strong> — 19 consecutive years</span></div>
+        <div class="award-row"><span class="award-dot"></span><span class="award-text"><strong>TALi Award Winner 2025</strong> — Outstanding Resident Loyalty &amp; Satisfaction</span></div>
+        <div class="award-row"><span class="award-dot"></span><span class="award-text">Top 1% nationally for online reputation — <strong>Harvest in Tracy, Santa Barbara Chino Hills, The Enclave, Homecoming at The Resort</strong></span></div>
+        <div class="award-row"><span class="award-dot"></span><span class="award-text">Thoughtfully designed communities throughout <strong>California and Nevada</strong></span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ SINGLE FAMILY — split, image right ════════════════ -->
-<section class="split-section reverse" id="single-family" aria-labelledby="sfh-h">
-  <div class="split-content blue-bg">
+<!-- SPLIT — Single family, image right ─────────────────── -->
+<section class="split img-right" id="single-family" aria-labelledby="sfh-h">
+  <div class="split-content bg-blue">
     <p class="t-eyebrow t-eyebrow-cream">Single family homes</p>
     <h2 class="t-h2" id="sfh-h">Room to grow.<br>Space to live well.</h2>
-    <p class="t-body t-body-cream">
-      We offer single family rental homes in California for those who need more room — more outdoor space, more bedrooms, more neighbourhood. Six communities, all managed with the same care as our apartment homes.
-    </p>
-    <div style="display:flex;flex-direction:column;gap:1px;background:rgba(255,251,248,.06);border-radius:3px;overflow:hidden;margin-bottom:40px;">
-      <div style="background:rgba(255,251,248,.04);padding:14px 18px;display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-        <span style="font-size:13px;font-weight:500;color:var(--cream);">Gramercy Rental Homes</span><span style="font-size:12px;color:rgba(255,251,248,.4);">(707) 512-9982</span>
-      </div>
-      <div style="background:rgba(255,251,248,.04);padding:14px 18px;display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-        <span style="font-size:13px;font-weight:500;color:var(--cream);">Green Valley Crest</span><span style="font-size:12px;color:rgba(255,251,248,.4);">(909) 597-4833</span>
-      </div>
-      <div style="background:rgba(255,251,248,.04);padding:14px 18px;display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-        <span style="font-size:13px;font-weight:500;color:var(--cream);">Rosemont Rental Homes</span><span style="font-size:12px;color:rgba(255,251,248,.4);">(916) 856-6788</span>
-      </div>
-      <div style="background:rgba(255,251,248,.04);padding:14px 18px;display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-        <span style="font-size:13px;font-weight:500;color:var(--cream);">Woodbridge Rental Homes</span><span style="font-size:12px;color:rgba(255,251,248,.4);">(916) 419-0995</span>
-      </div>
-      <div style="background:rgba(255,251,248,.04);padding:14px 18px;display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-        <span style="font-size:13px;font-weight:500;color:var(--cream);">Woodland Rental Homes</span><span style="font-size:12px;color:rgba(255,251,248,.4);">(916) 419-0995</span>
-      </div>
-      <div style="background:rgba(255,251,248,.04);padding:14px 18px;display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-        <span style="font-size:13px;font-weight:500;color:var(--cream);">Villa Capri Rental Homes</span><span style="font-size:12px;color:rgba(255,251,248,.4);">(909) 476-6800</span>
-      </div>
+    <p class="t-body">We offer single family rental homes across California for those who need more room — more outdoor space, more bedrooms, more neighbourhood. Six communities, all managed with the same care as our apartments.</p>
+    <div style="display:flex;flex-direction:column;gap:1px;background:rgba(255,251,248,.06);border-radius:2px;overflow:hidden;margin-bottom:40px;">
+      <div style="background:rgba(255,251,248,.04);padding:13px 18px;display:flex;justify-content:space-between;align-items:center;"><span style="font-size:13px;font-weight:500;color:var(--cream);">Gramercy Rental Homes</span><span style="font-size:12px;color:rgba(255,251,248,.38);">(707) 512-9982</span></div>
+      <div style="background:rgba(255,251,248,.04);padding:13px 18px;display:flex;justify-content:space-between;align-items:center;"><span style="font-size:13px;font-weight:500;color:var(--cream);">Green Valley Crest</span><span style="font-size:12px;color:rgba(255,251,248,.38);">(909) 597-4833</span></div>
+      <div style="background:rgba(255,251,248,.04);padding:13px 18px;display:flex;justify-content:space-between;align-items:center;"><span style="font-size:13px;font-weight:500;color:var(--cream);">Rosemont Rental Homes</span><span style="font-size:12px;color:rgba(255,251,248,.38);">(916) 856-6788</span></div>
+      <div style="background:rgba(255,251,248,.04);padding:13px 18px;display:flex;justify-content:space-between;align-items:center;"><span style="font-size:13px;font-weight:500;color:var(--cream);">Woodbridge Rental Homes</span><span style="font-size:12px;color:rgba(255,251,248,.38);">(916) 419-0995</span></div>
+      <div style="background:rgba(255,251,248,.04);padding:13px 18px;display:flex;justify-content:space-between;align-items:center;"><span style="font-size:13px;font-weight:500;color:var(--cream);">Woodland Rental Homes</span><span style="font-size:12px;color:rgba(255,251,248,.38);">(916) 419-0995</span></div>
+      <div style="background:rgba(255,251,248,.04);padding:13px 18px;display:flex;justify-content:space-between;align-items:center;"><span style="font-size:13px;font-weight:500;color:var(--cream);">Villa Capri Rental Homes</span><span style="font-size:12px;color:rgba(255,251,248,.38);">(909) 476-6800</span></div>
     </div>
     <a href="/single-family-homes" class="cta-link cta-link-cream">View all homes</a>
   </div>
   <div class="split-img">
     <img
-      src="https://www.lewisapartments.com/uploads/images/images/400x300h/736817/1210_GramercyRental_Ext1_2.2023.jpg"
+      src="https://www.lewisapartments.com/uploads/images/images/1200x800h/736817/1210_GramercyRental_Ext1_2.2023.jpg"
+      srcset="
+        https://www.lewisapartments.com/uploads/images/images/800x500h/736817/1210_GramercyRental_Ext1_2.2023.jpg 800w,
+        https://www.lewisapartments.com/uploads/images/images/1200x800h/736817/1210_GramercyRental_Ext1_2.2023.jpg 1200w"
+      sizes="50vw"
       alt="Gramercy rental home exterior"
       loading="lazy"
-      onerror="this.style.display='none'"
+      onerror="this.src='https://www.lewisapartments.com/uploads/images/images/400x300h/736817/1210_GramercyRental_Ext1_2.2023.jpg'"
     >
   </div>
 </section>
 
-<!-- ═══ LOCATIONS ══════════════════════════════════════════ -->
-<section class="section locations-section" aria-labelledby="loc-h">
+<!-- LOCATIONS ──────────────────────────────────────────── -->
+<section class="section" style="background:var(--cream);" aria-labelledby="loc-h">
   <div class="wrap">
     <div class="section-head">
       <div>
@@ -825,7 +849,7 @@ footer {
       </div>
       <a href="/our-communities" class="cta-link cta-link-teal">All communities</a>
     </div>
-    <div class="locations-grid">
+    <div class="loc-grid">
       <a href="/our-communities" class="loc">
         <div class="loc-region">California</div>
         <div class="loc-name">Inland Empire</div>
@@ -854,8 +878,8 @@ footer {
   </div>
 </section>
 
-<!-- ═══ CTA ════════════════════════════════════════════════ -->
-<section class="cta-section" aria-labelledby="cta-h">
+<!-- CTA ────────────────────────────────────────────────── -->
+<section class="section" style="background:var(--teal);" aria-labelledby="cta-h">
   <div class="wrap">
     <div class="cta-inner">
       <div>
@@ -863,9 +887,7 @@ footer {
         <h2 class="t-h2" id="cta-h">Schedule your visit to any Lewis Apartments community today.</h2>
       </div>
       <div class="cta-right">
-        <p class="t-body-cream" style="font-size:17px;font-weight:300;line-height:1.65;">
-          Our teams are ready to show you around. Tours conclude at dusk.
-        </p>
+        <p class="cta-body">Our teams are ready to show you around. Tours conclude at dusk.</p>
         <a href="/our-communities" class="btn btn-cream">View our communities</a>
         <a href="/contact-us" class="cta-link cta-link-cream">Contact us</a>
       </div>
@@ -873,20 +895,20 @@ footer {
   </div>
 </section>
 
-<!-- ═══ FOOTER ══════════════════════════════════════════════ -->
+<!-- FOOTER ─────────────────────────────────────────────── -->
 <footer aria-label="Site footer">
   <div class="wrap">
     <div class="footer-top">
-      <div class="footer-brand">
-        <div class="footer-logo-mark">LEWIS</div>
-        <div class="footer-logo-sub">Apartments</div>
+      <div class="f-brand">
+        <div class="f-logo-mark">LEWIS</div>
+        <div class="f-logo-sub">Apartments</div>
         <p>Crafting beautifully appointed apartment homes across California and Nevada. Part of the Lewis Group of Companies.</p>
-        <div class="footer-social">
+        <div class="f-social">
           <a href="https://www.facebook.com/LewisApartments" class="soc" aria-label="Facebook" target="_blank" rel="noopener">f</a>
           <a href="https://www.instagram.com/lewisgroupofcompanies" class="soc" aria-label="Instagram" target="_blank" rel="noopener">ig</a>
         </div>
       </div>
-      <div class="footer-col">
+      <div class="f-col">
         <h4>Communities</h4>
         <ul>
           <li><a href="/our-communities">All communities</a></li>
@@ -895,7 +917,7 @@ footer {
           <li><a href="/single-family-homes">Single family homes</a></li>
         </ul>
       </div>
-      <div class="footer-col">
+      <div class="f-col">
         <h4>Company</h4>
         <ul>
           <li><a href="/about-us">About us</a></li>
@@ -905,7 +927,7 @@ footer {
           <li><a href="https://lewisgroupofcompanies.com" target="_blank" rel="noopener">Lewis Group of Companies</a></li>
         </ul>
       </div>
-      <div class="footer-col">
+      <div class="f-col">
         <h4>Residents</h4>
         <ul>
           <li><a href="/resident-corner">Resident's corner</a></li>
@@ -917,12 +939,12 @@ footer {
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-legal">
+      <div class="f-legal">
         <p>©2026 Lewis Apartment Communities. CalDRE License #01994759.</p>
         <p>Lewis Apartment Communities is pledged to the letter and spirit of U.S. policy for the achievement of equal housing opportunity. We encourage and support an affirmative advertising and marketing program in which there are no barriers to obtaining housing because of race, color, religion, sex, handicap, familial status, or national origin.</p>
-        <p>*Pricing based on move-in within 14 days with a 12-month lease term. Starting prices can change daily and will change based on move-in date and lease term chosen. Deposit is subject to change based on approved credit. Scheduled tours conclude at dusk. The Lewis Move-In Guarantee and 24-Hour Service Commitment — some restrictions apply, see leasing office for details.</p>
+        <p>*Pricing based on move-in within 14 days with a 12-month lease term. Starting prices can change daily. The Lewis Move-In Guarantee and 24-Hour Service Commitment — some restrictions apply, see leasing office for details.</p>
       </div>
-      <div class="footer-links">
+      <div class="f-links">
         <a href="https://lewisgroupofcompanies.com/terms-of-service/">Terms</a>
         <a href="https://lewisgroupofcompanies.com/lewis-privacy-policy/">Privacy</a>
         <a href="https://lewisgroupofcompanies.com/alpr-policy/">ALPR</a>
@@ -932,22 +954,16 @@ footer {
 </footer>
 
 <script>
-  // Nav: transparent over hero, solid when scrolled
   const nav = document.getElementById('nav');
-  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 60);
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  const tick = () => nav.classList.toggle('scrolled', window.scrollY > 60);
+  window.addEventListener('scroll', tick, { passive: true });
+  tick();
 
-  // Community tabs
   function switchTab(id, el) {
-    document.querySelectorAll('.tab').forEach(t => {
-      t.classList.remove('active');
-      t.setAttribute('aria-selected', 'false');
-    });
+    document.querySelectorAll('.tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    el.classList.add('active');
-    el.setAttribute('aria-selected', 'true');
-    document.getElementById('tab-' + id).classList.add('active');
+    el.classList.add('active'); el.setAttribute('aria-selected','true');
+    document.getElementById('tab-'+id).classList.add('active');
   }
 </script>
 </body>
