@@ -798,11 +798,11 @@ footer {
   display: block;
   line-height: 0;
 }
-.f-wordmark img {
+.f-wordmark img,
+.f-wordmark svg {
   width: 100%;
   height: auto;
   display: block;
-  /* SVG already has black fills — no filter needed */
 }
 
 /* Bottom bar — three items spaced across full width */
