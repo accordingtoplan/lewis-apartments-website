@@ -781,6 +781,8 @@ footer {
 .f-linkedin svg { width: 15px; height: 15px; fill: currentColor; }
 
 /* Full-bleed LEWIS GROUP OF COMPANIES wordmark — true edge-to-edge */
+/* Footer wordmark SVG keeps its black fills */
+.f-wordmark svg path { fill: #111111; }
 .f-wordmark {
   padding: clamp(28px, 3.5vw, 48px) 0 clamp(20px, 2.5vw, 36px);
   border-top: 1px solid var(--border);
