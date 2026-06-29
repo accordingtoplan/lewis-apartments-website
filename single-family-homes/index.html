@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" data-root="/">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Single Family Homes — Lewis Apartments</title>
+<meta name="description" content="Lewis single family rental homes across California. Private yards, garages and top-rated school districts — managed with the same care as our apartment communities.">
+<link rel="stylesheet" href="/includes/shared.css">
+<style>
+.page-hero { background:var(--blue); padding:clamp(100px,12vw,160px) 0 clamp(48px,6vw,80px); position:relative; overflow:hidden; }
+.page-hero::after { content:''; position:absolute; inset:0; background:linear-gradient(135deg,var(--teal) 0%,transparent 60%); opacity:.25; pointer-events:none; }
+.page-hero-inner { position:relative; z-index:1; }
+.page-hero .t-eyebrow { color:rgba(255,251,248,.45); margin-bottom:16px; }
+.page-hero .t-h1 { color:var(--cream); margin-bottom:20px; }
+.page-hero .t-body { color:rgba(255,251,248,.65); max-width:520px; }
+
+/* Intro split */
+.split { display:grid; grid-template-columns:1fr 1fr; min-height:560px; }
+.split-img { position:relative; overflow:hidden; background:var(--blue); }
+.split-img img { width:100%; height:100%; object-fit:cover; }
+.split-content { display:flex; flex-direction:column; justify-content:center; padding:clamp(48px,6vw,100px); }
+.split-content .t-eyebrow { margin-bottom:20px; }
+.split-content .t-h2 { margin-bottom:24px; }
+.split-content .t-body { margin-bottom:36px; }
+
+/* Feature list */
+.feature-list { list-style:none; display:flex; flex-direction:column; gap:12px; margin-bottom:40px; }
+.feature-list li { display:flex; align-items:center; gap:12px; font-size:15px; color:var(--teal-mid); }
+.feature-list li::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--teal); flex-shrink:0; }
+
+/* Homes grid */
+.homes-section { background:var(--cream); }
+.homes-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border-radius:3px; overflow:hidden; margin-top:48px; }
+.home-card { background:var(--cream); padding:32px 28px; transition:background .18s; }
+.home-card:hover { background:#F0EBE5; }
+.home-num { font-size:11px; font-weight:500; letter-spacing:.1em; color:var(--teal); margin-bottom:14px; }
+.home-name { font-size:19px; font-weight:500; letter-spacing:-.01em; margin-bottom:8px; }
+.home-desc { font-size:13px; color:var(--gray); line-height:1.6; margin-bottom:20px; }
+.home-phone { font-size:13px; color:var(--blue); font-weight:500; }
+.home-phone a { color:inherit; transition:color .15s; }
+.home-phone a:hover { color:var(--teal); }
+
+/* Benefits */
+.benefits-section { background:var(--warm); }
+.benefits-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(5,44,55,.1); border-radius:3px; overflow:hidden; margin-top:48px; }
+.benefit-item { background:var(--warm); padding:32px 26px; }
+.benefit-icon { width:36px; height:36px; border-radius:3px; background:rgba(5,44,55,.08); display:flex; align-items:center; justify-content:center; margin-bottom:16px; }
+.benefit-icon svg { color:var(--teal); }
+.benefit-name { font-size:16px; font-weight:500; margin-bottom:8px; }
+.benefit-desc { font-size:13px; color:var(--gray); line-height:1.6; }
+
+@media(max-width:1024px){
+  .split { grid-template-columns:1fr; }
+  .split-img { min-height:360px; order:-1; }
+  .homes-grid { grid-template-columns:1fr 1fr; }
+  .benefits-grid { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:640px){
+  .homes-grid { grid-template-columns:1fr; }
+  .benefits-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+<div id="nav-include"></div>
+
+<!-- PAGE HERO -->
+<section class="page-hero" aria-labelledby="sfh-h">
+  <div class="wrap page-hero-inner">
+    <p class="t-eyebrow">Single Family Homes</p>
+    <h1 class="t-h1" id="sfh-h">Room to grow.<br>Space to live well.</h1>
+    <p class="t-body">Six single family rental home communities across California — private yards, garages and top-rated school districts, managed with the same care as our apartments.</p>
+  </div>
+</section>
+
+<!-- INTRO SPLIT -->
+<section class="split" aria-labelledby="sfh-intro-h">
+  <div class="split-img">
+    <img src="https://lewisgroupofcompanies.com/wp-content/uploads/2023/08/Lewis-Group_Locations.75-scaled.jpg"
+         alt="Lewis single family home exterior" loading="eager">
+  </div>
+  <div class="split-content" style="background:var(--cream);">
+    <p class="t-eyebrow">Why a Lewis rental home</p>
+    <h2 class="t-h2" id="sfh-intro-h">The flexibility of renting. The feel of owning.</h2>
+    <p class="t-body">Our rental homes offer the space your family needs without the commitment of a mortgage. Every property is professionally managed, well-maintained and part of a neighbourhood worth coming home to.</p>
+    <ul class="feature-list">
+      <li>Private yards and outdoor space</li>
+      <li>Attached or detached garages</li>
+      <li>Top-rated school districts</li>
+      <li>Pet-friendly policies</li>
+      <li>Professional on-site management</li>
+      <li>24-hour service commitment</li>
+    </ul>
+    <a href="/contact-us/" class="cta-link cta-link-teal">Get in touch</a>
+  </div>
+</section>
+
+<!-- HOMES LISTING -->
+<section class="section homes-section" aria-labelledby="homes-h">
+  <div class="wrap">
+    <div>
+      <p class="t-eyebrow">Our rental home communities</p>
+      <h2 class="t-h2" id="homes-h">Six communities across California.</h2>
+    </div>
+    <div class="homes-grid">
+      <div class="home-card">
+        <div class="home-num">01</div>
+        <div class="home-name">Gramercy Rental Homes</div>
+        <div class="home-desc">Single family homes in a sought-after Northern California location, with easy access to Sacramento and surrounding areas.</div>
+        <div class="home-phone"><a href="tel:7075129982">(707) 512-9982</a></div>
+      </div>
+      <div class="home-card">
+        <div class="home-num">02</div>
+        <div class="home-name">Green Valley Crest</div>
+        <div class="home-desc">Beautifully situated homes in the rolling hills of Chino Hills — spacious floor plans and mature landscaping.</div>
+        <div class="home-phone"><a href="tel:9095974833">(909) 597-4833</a></div>
+      </div>
+      <div class="home-card">
+        <div class="home-num">03</div>
+        <div class="home-name">Rosemont Rental Homes</div>
+        <div class="home-desc">Family-friendly homes in the established Rosemont neighbourhood of Sacramento, close to schools and parks.</div>
+        <div class="home-phone"><a href="tel:9168566788">(916) 856-6788</a></div>
+      </div>
+      <div class="home-card">
+        <div class="home-num">04</div>
+        <div class="home-name">Woodbridge Rental Homes</div>
+        <div class="home-desc">Single family homes in a well-connected Sacramento community with excellent freeway access and top schools nearby.</div>
+        <div class="home-phone"><a href="tel:9164190995">(916) 419-0995</a></div>
+      </div>
+      <div class="home-card">
+        <div class="home-num">05</div>
+        <div class="home-name">Woodland Rental Homes</div>
+        <div class="home-desc">Spacious homes in Woodland, CA — a growing community with a small-town feel and easy access to the Sacramento region.</div>
+        <div class="home-phone"><a href="tel:9164190995">(916) 419-0995</a></div>
+      </div>
+      <div class="home-card">
+        <div class="home-num">06</div>
+        <div class="home-name">Villa Capri Rental Homes</div>
+        <div class="home-desc">Inland Empire rental homes with private yards and garages — managed to the same high standard as all Lewis communities.</div>
+        <div class="home-phone"><a href="tel:9094766800">(909) 476-6800</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="section benefits-section" aria-labelledby="benefits-h">
+  <div class="wrap">
+    <div>
+      <p class="t-eyebrow">What's included</p>
+      <h2 class="t-h2" id="benefits-h">Everything you'd expect from Lewis.</h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-item">
+        <div class="benefit-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="benefit-name">Private spaces</div>
+        <div class="benefit-desc">Every home comes with private outdoor space — yards, patios or both — plus garage parking.</div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="benefit-name">Professional management</div>
+        <div class="benefit-desc">On-site management teams and the Lewis 24-Hour Service Commitment — the same standard across all our communities.</div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="benefit-name">Pet-friendly</div>
+        <div class="benefit-desc">We welcome pets at most of our rental home communities — because home should be for the whole family.</div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div class="benefit-name">Flexible terms</div>
+        <div class="benefit-desc">Lease terms designed around the way families actually live, with options that offer stability and flexibility.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section" style="background:var(--teal);">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,96px);align-items:center;">
+      <div>
+        <p class="t-eyebrow" style="color:rgba(255,251,248,.4);margin-bottom:20px;">Ready to find your home?</p>
+        <h2 class="t-h2" style="color:var(--cream);">Schedule a tour at any of our rental home communities.</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:20px;">
+        <p style="font-size:17px;font-weight:400;color:rgba(255,251,248,.65);line-height:1.65;">Contact the community directly using the numbers above, or reach our team and we'll point you in the right direction.</p>
+        <a href="/contact-us/" class="btn btn-cream">Contact us</a>
+        <a href="/our-communities/" class="cta-link cta-link-cream">View all communities</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-include"></div>
+<script src="/js/includes.js"></script>
+</body>
+</html>
