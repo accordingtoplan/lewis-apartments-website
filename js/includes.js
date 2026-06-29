@@ -4,7 +4,8 @@
  * data-root on <html> controls the path prefix (set per page).
  */
 (function () {
-  const root = document.documentElement.dataset.root || '/';
+  // base href handles path resolution — just use relative paths
+  const root = '';
 
   function loadInclude(url, targetId, cb) {
     fetch(url)
