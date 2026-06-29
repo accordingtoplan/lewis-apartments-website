@@ -525,6 +525,7 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
   grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   background: var(--border);
+  align-content: start;
 }
 
 /* Community card */
