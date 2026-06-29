@@ -38,14 +38,13 @@
 /* ─── RESET ───────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { width: 100%; }
-html { scroll-behavior: smooth; overflow-x: hidden; }
+html { scroll-behavior: smooth; }
 body {
   font-family: var(--ff);
   background: var(--cream);
   color: var(--blue);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
 }
 img { display: block; max-width: 100%; }
 a { text-decoration: none; color: inherit; }
@@ -790,11 +789,7 @@ footer {
 /* Footer wordmark SVG keeps its black fills */
 .f-wordmark svg path { fill: #111111; }
 .f-wordmark {
-  /* Full viewport width — sits outside .wrap horizontally */
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+  /* Direct child of footer — no wrap, naturally full width */
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   padding: clamp(20px, 2.5vw, 36px) 0;
@@ -805,7 +800,7 @@ footer {
   line-height: 0;
 }
 .f-wordmark svg {
-  /* SVG fills full viewport width, height scales proportionally */
+  /* Fill full footer width = full viewport width */
   width: 100%;
   height: auto;
   display: block;
