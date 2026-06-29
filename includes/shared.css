@@ -32,8 +32,7 @@
   --gray:     #6B6B6B;
   --border:   rgba(5,44,55,0.1);
   --ff:       'Haffer SQ', sans-serif;
-  --max:      1280px;
-  --pad:      clamp(28px, 5.5vw, 88px);
+  --pad:      clamp(32px, 5.5vw, 96px);
 }
 
 /* ─── RESET ───────────────────────────────────────────── */
@@ -92,7 +91,7 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
 }
 
 /* ─── LAYOUT ──────────────────────────────────────────── */
-.wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+.wrap { width: 100%; padding: 0 var(--pad); }
 .section { padding: clamp(72px, 9vw, 140px) 0; }
 
 /* ─── CTAs ────────────────────────────────────────────── */
@@ -175,23 +174,27 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
   align-items: center;
   justify-content: space-between;
   height: 68px;
-  max-width: var(--max);
+  width: 100%;
   margin: 0 auto;
   padding: 0 var(--pad);
 }
 
-/* Logo */
+/* Logo — inline SVG, colour-switched via CSS fill */
 .logo { display: block; line-height: 0; flex-shrink: 0; }
-.logo-img {
+.logo-svg {
+  display: block;
+  line-height: 0;
+}
+.logo-svg svg {
   height: 36px;
   width: auto;
   display: block;
-  filter: brightness(0) invert(1);
-  transition: filter .3s;
+  transition: fill .3s;
 }
-.nav.scrolled .logo-img {
-  filter: brightness(0) saturate(100%) invert(10%) sepia(40%) saturate(900%) hue-rotate(155deg) brightness(85%);
-}
+/* Over hero video: paths are white (already in SVG) */
+.logo-svg svg path { fill: #FFFBF8; transition: fill .3s; }
+/* On scrolled cream nav: switch to Lewis Blue */
+.nav.scrolled .logo-svg svg path { fill: #052C37; }
 
 /* Nav links container */
 .nav-links {
@@ -390,7 +393,7 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: var(--max);
+  width: 100%;
   margin: 0 auto;
   padding: 0 var(--pad) clamp(56px, 7vw, 96px);
 }
