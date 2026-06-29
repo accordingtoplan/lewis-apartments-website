@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en" data-root="/">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Communities — Lewis Apartments</title>
+<meta name="description" content="Browse Lewis apartment communities across California and Nevada. Filter by location, state or type to find your next home.">
+<link rel="stylesheet" href="/includes/shared.css">
+<style>
+/* Page hero */
+.page-hero {
+  background: var(--blue);
+  padding: clamp(100px,12vw,160px) 0 clamp(48px,6vw,80px);
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--teal) 0%, transparent 60%);
+  opacity: .25;
+  pointer-events: none;
+}
+.page-hero-inner { position: relative; z-index: 1; }
+.page-hero .t-eyebrow { color: rgba(255,251,248,.45); margin-bottom: 16px; }
+.page-hero .t-h1 { color: var(--cream); margin-bottom: 20px; }
+.page-hero .t-body { color: rgba(255,251,248,.65); max-width: 520px; }
+
+/* Filter bar */
+.filter-bar {
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 68px;
+  z-index: 50;
+  padding: 0;
+}
+.filter-inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  min-height: 56px;
+  flex-wrap: wrap;
+}
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-right: 1px solid var(--border);
+  flex: 1;
+  min-width: 160px;
+}
+.filter-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gray);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.filter-select {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: var(--ff);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--blue);
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+.filter-search {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+}
+.filter-search input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: var(--ff);
+  font-size: 14px;
+  color: var(--blue);
+  outline: none;
+}
+.filter-search input::placeholder { color: var(--gray); }
+.filter-count {
+  font-size: 12px;
+  color: var(--gray);
+  white-space: nowrap;
+  padding: 0 20px;
+}
+.filter-reset {
+  font-size: 12px;
+  color: var(--teal);
+  padding: 0 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  background: none;
+  border: none;
+  font-family: var(--ff);
+  transition: color .15s;
+}
+.filter-reset:hover { color: var(--blue); }
+
+/* Results grid */
+.results-section { background: var(--cream); padding: clamp(48px,6vw,80px) 0; }
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+}
+.no-results {
+  display: none;
+  grid-column: 1/-1;
+  padding: 64px 0;
+  text-align: center;
+  color: var(--gray);
+  font-size: 16px;
+}
+.no-results.visible { display: block; }
+
+/* Section divider */
+.state-divider {
+  grid-column: 1/-1;
+  padding: 32px 0 16px;
+  background: var(--cream);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.state-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.state-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+/* Community card — same as HP but slightly larger */
+.c-card { display: block; background: var(--cream); transition: background .18s; }
+.c-card:hover { background: #F0EBE5; }
+.c-img { aspect-ratio: 3/2; overflow: hidden; background: var(--teal-mid); }
+.c-img img { width:100%;height:100%;object-fit:cover;transition:transform .5s ease; }
+.c-card:hover .c-img img { transform: scale(1.05); }
+.c-img-placeholder { width:100%;height:100%;background:linear-gradient(135deg,#254D57,#196464); }
+.c-body { padding: 22px 24px 28px; }
+.c-region { font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:5px; }
+.c-name { font-size:17px;font-weight:500;letter-spacing:-.01em;color:var(--blue);margin-bottom:6px;line-height:1.25; }
+.c-address { font-size:13px;font-weight:400;color:var(--gray);margin-bottom:14px; }
+.c-foot { display:flex;align-items:center;justify-content:space-between; }
+.c-phone { font-size:12px;color:var(--gray); }
+.c-arrow { font-size:15px;color:var(--teal);opacity:0;transform:translateX(-4px);transition:opacity .18s,transform .18s; }
+.c-card:hover .c-arrow { opacity:1;transform:translateX(0); }
+
+@media(max-width:1024px){ .results-grid { grid-template-columns:1fr 1fr; } }
+@media(max-width:640px){
+  .results-grid { grid-template-columns:1fr; }
+  .filter-inner { flex-direction:column; align-items:stretch; }
+  .filter-group { border-right:none; border-bottom:1px solid var(--border); }
+}
+</style>
+</head>
+<body>
+<div id="nav-include"></div>
+<!-- PAGE HERO -->
+<section class="page-hero" aria-labelledby="page-h">
+  <div class="wrap page-hero-inner">
+    <p class="t-eyebrow">Lewis Apartments</p>
+    <h1 class="t-h1" id="page-h">Our communities.</h1>
+    <p class="t-body">Apartment homes across California and Nevada — thoughtfully designed and carefully managed.</p>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-bar" role="search" aria-label="Filter communities">
+  <div class="wrap">
+    <div class="filter-inner">
+      <div class="filter-search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="search" id="search-input" placeholder="Search communities..." aria-label="Search communities">
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">State</span>
+        <select class="filter-select" id="filter-state" aria-label="Filter by state">
+          <option value="">All states</option>
+          <option value="CA">California</option>
+          <option value="NV">Nevada</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Location</span>
+        <select class="filter-select" id="filter-location" aria-label="Filter by location">
+          <option value="">All locations</option>
+          <option value="alta-loma">Alta Loma</option>
+<option value="antelope">Antelope</option>
+<option value="chino">Chino</option>
+<option value="chino-hills">Chino Hills</option>
+<option value="covina">Covina</option>
+<option value="dixon">Dixon</option>
+<option value="eastvale">Eastvale</option>
+<option value="ontario">Ontario</option>
+<option value="rancho-cucamonga">Rancho Cucamonga</option>
+          <option value="reno">Reno</option>
+          <option value="las-vegas">Las Vegas</option>
+        </select>
+      </div>
+      <div class="filter-group" style="border-right:none;">
+        <span class="filter-label">Type</span>
+        <select class="filter-select" id="filter-type" aria-label="Filter by type">
+          <option value="">All types</option>
+          <option value="apartment">Apartments</option>
+          <option value="senior">Senior communities</option>
+        </select>
+      </div>
+      <span class="filter-count" id="results-count">15 communities</span>
+      <button class="filter-reset" id="filter-reset" onclick="resetFilters()">Clear filters</button>
+    </div>
+  </div>
+</div>
+
+<!-- RESULTS -->
+<section class="results-section" aria-label="Community listings">
+  <div class="wrap">
+    <div class="results-grid" id="results-grid">
+
+      <div class="state-divider" id="ca-divider"><span class="state-label">California</span></div>
+      <a href="https://www.lewisapartments.com/sunscape-apts-alta-loma-ca" class="c-card"
+         data-state="CA" data-location="alta-loma" data-type="apartment"
+         target="_blank" rel="noopener">
+        <div class="c-img"><img src="https://www.lewisapartments.com/uploads/images/images/307x194h/809871/Sunscape_Pool4_9.2025.jpg" alt="Sunscape" loading="lazy"></div>
+        <div class="c-body">
+          <div class="c-region">Alta Loma, CA</div>
+          <div class="c-name">Sunscape</div>
+          <div class="c-address">8840 19th Street, Alta Loma, CA 91701</div>
+          <div class="c-foot"><span class="c-phone">(909) 404-7577</span><span class="c-arrow">→</span></div>
+        </div>
+      </a>
+      <a href="https://www.lewisapartments.com/antelope-ridge-antelope-ca" class="c-card"
+         data-state="CA" data-location="antelope" data-type="apartment"
+         target="_blank" rel="noopener">
+        <div class="c-img"><div class="c-img-placeholder"></div></div>
+        <div class="c-body">
+          <div class="c-region">Antelope, CA</div>
+          <div class="c-name">Antelope Ridge</div>
+          <div class="c-address">4400 Shandwick Drive, Antelope, CA 95843</div>
+          <div class="c-foot"><span class="c-phone">(916) 907-6052</span><span class="c-arrow">→</span></div>
+        </div>
+      </a>
+      <a href="https://www.lewisapartments.com/homecoming-at-the-preserve-chino-ca" class="c-card"
+         data-state="CA" data-location="chino" data-type="apartment"
+         target="_blank" rel="noopener">
+        <div class="c-img"><img src="https://www.lewisapartments.com/uploads/images/images/307x194h/743282/Clubhouse_exterior.jpg" alt="Homecoming at The Preserve" loading="lazy"></div>
+        <div class="c-body">
+          <div class="c-region">Chino, CA</div>
+          <div class="c-name">Homecoming at The Preserve</div>
+          <div class="c-address">16250 Homecoming Drive, Chino, CA 91708</div>
+          <div class="c-foot"><span class="c-phone">(909) 404-7635</span><span class="c-arrow">→</span></div>
+        </div>
+      </a>
+      <a href="https://www.lewisapartments.com/independence-at-the-preserve-chino-ca/" class="c-card"
+         data-state="CA" data-location="chino" data-type="apartment"
+         target="_blank" rel="noopener">
+        <div class="c-img"><img src="https://www.lewisapartments.com/uploads/images/images/307x194h/788414/IAP_Pool3_12.2024.jpg" alt="Independence at The Preserve" loading="lazy"></div>
+        <div class="c-body">
+          <div class="c-region">Chino, CA</div>
+          <div class="c-name">Independence at The Preserve</div>
+          <div class="c-address">8400 Legacy Park Street, Chino, CA 91708</div>
+          <div class="c-foot"><span class="c-phone">(951) 561-4204</span><span class="c-arrow">→</span></div>
+        </div>
+      </a>
+      <a href="https://www.lewisapartments.com/green-valley-apartments-chino-hills-ca" class="c-card"
+         data-state="CA" data-location="chino-hills" data-type="apartment"
+         target="_blank" rel="noopener">
+        <div class="c-img"><img src="https://www.lewisapartments.com/uploads/images/images/307x194h/798018/Green_Valley_Pool2_4.25.jpg" alt="Green Valley" loading="lazy"></div>
+        <div class="c-body">
+          <div class="c-region">Chino Hills, CA</div>
+          <div class="c-name">Green Valley</div>
+          <div class="c-address">14901 Frost Avenue, Chino Hills, CA 91709</div>
+          <div class="c-foot"><span class="c-phone">(909) 404-7795</span><span class="c-arrow">→</span></div>
+        </div>
+      </a>
+      <a href="https://www.lewisapartments.com/santa-barbara-in-chino-hills-chino-hills-ca" class="c-card"
+         data-state="CA" data-location="chino-hills" data-type="apartment"
+         target="_blank" rel="noopener">
+        <div class="c-img"><img src="https://www.lewisapartments.com/uploads/images/images/307x194h/795459/Santa_Barbara_Chino_Hills_Our_Communities_Banner_Top_Rated.jpg" alt="Santa Barbara in Chino Hills" loading="lazy"></div>
+        <div class="c-body">
+          <div class="c-region">Chino Hills, CA</div>
+          <div class="c-name">Santa Barbara in Chino Hills</div>
+          <div class="c-address">15920 Pomona Rincon Road, Chino Hills, CA 91709</div>
+          <div class="c-foot"><span class="c-phone">(909) 404-7973</span><span class="c-arrow">→</span></div>
+        </div>
+      </a>
+      <a href="https://www.lewisapartments.com/village-green-senior-covina-ca" class="c-card"
+         data-state="CA" data-location="covina" data-type="senior"
+         target="_blank" rel="noopener">
+        <div class="c-img"><img src="https://www.lewisapartments.com/uploads/images/images/307x194h/263583/LMC_VillageGreen_Spa2-Bubbles_1285a-11x8.jpg" alt="Village Green" loading="lazy"></div>
+        <div class="c-body">
+          <div class="c-region">Covina, CA</div>
+          <div class="c-name">Village Green</div>
+          <div class="c-address">152 East Covina Boulevard, Covina, CA 91722</div>
+          <div class="c-foot"><span class="c-phone">(626) 772-6959</span><span class="c-arrow">→</span></div>
+        </div>
+      </a>
+      <a href="https://www.lewisapartments.com/independence-in-dixon-dixon-ca" class="c-card"
+         data-state="CA" data-location="dixon" data-type="apartment"
+         target="_blank" rel="noopener">
+        <div class="c-img"><img src="https://www.lewisapartments.com/uploads/images/images/307x194h/820269/IID_Bldg_7_02.2026.jpg" alt="Independence in Dixon" loading="lazy"></div>
+        <div class="c-body">
+          <div class="c-region">Dixon, CA</div>
+          <div class="c-name">Independence in Dixon</div>
+          <div class="c-address">1905 N 1st Street, Dixon, CA 95620</div>
+          <div class="c-foot"><span class="c-phone">(707) 723-0843</span><span class="c-arrow">→</span></div>
+        </div>
+      </a>
+      <a href="https://www.lewisapartments.com/homecoming-at-eastvale-eastvale-ca" class="c-card"
+         data-state="CA" data-location="eastvale" data-type="apartment"
+         target="_blank" rel="noopener">
+        <div class="c-img"><img src="https://www.lewisapartments.com/uploads/images/images/307x194h/205289/Townhomes.jpg" alt="Homecoming at Eastvale" loading="lazy"></div>
+        <div class="c-body">
+          <div class="c-region">Eastvale, CA</div>
+          <div class="c-name">Homecoming at Eastvale</div>
+          <div class="c-address">5464 West Homecoming Circle, Eastvale, CA 91752</div>
+          <div class="c-foot"><span class="c-phone">(951) 612-8913</span><span class="c-arrow">→</span></div>
+        </div>
+      </a>
+      <a href="https://www.lewisapartments.com/sycamore-park-ontario-ca" class="c-card"
+         data-state="CA" data-location="ontario" data-type="apartment"
+         target="_blank" rel="noopener">
+        <div class="c-img"><img src="https://www.lewisapartments.com/uploads/images/images/307x194h/760335/Sycamore_Park_Pool_Spa4_10.2023.jpg" alt="Sycamore Park" loading="lazy"></div>
+        <div class="c-body">
+          <div class="c-region">Ontario, CA</div>
+          <div class="c-name">Sycamore Park</div>
+          <div class="c-address">1221 North Vineyard Avenue, Ontario, CA 91764</div>
+          <div class="c-foot"><span class="c-phone">(909) 404-7712</span><span class="c-arrow">→</span></div>
+        </div>
+      </a>
+      <a href="https://www.lewisapartments.com/carmel-at-terra-vista-rancho-cucamonga-ca" class="c-card"
+         data-state="CA" data-location="rancho-cucamonga" data-type="apartment"
+         target="_blank" rel="noopener">
+        <div class="c-img"><img src="https://www.lewisapartments.com/uploads/images/images/307x194h/758811/CTV_Spa3_9.2023.jpg" alt="Carmel at Terra Vista" loading="lazy"></div>
+        <div class="c-body">
+          <div class="c-region">Rancho Cucamonga, CA</div>
+          <div class="c-name">Carmel at Terra Vista</div>
+          <div class="c-address">10850 Church Street, Rancho Cucamonga, CA 91730</div>
+          <div class="c-foot"><span class="c-phone">(909) 326-6079</span><span class="c-arrow">→</span></div>
+        </div>
+      </a>
+      <a href="https://www.lewisapartments.com/del-mar-apartments-rancho-cucamonga-ca" class="c-card"
+         data-state="CA" data-location="rancho-cucamonga" data-type="apartment"
+         target="_blank" rel="noopener">
+        <div class="c-img"><img src="https://www.lewisapartments.com/uploads/images/images/307x194h/767378/Del_Mar_Pool1_1.2024.jpg" alt="Del Mar" loading="lazy"></div>
+        <div class="c-body">
+          <div class="c-region">Rancho Cucamonga, CA</div>
+          <div class="c-name">Del Mar</div>
+          <div class="c-address">7868 Milliken Avenue, Rancho Cucamonga, CA 91730</div>
+          <div class="c-foot"><span class="c-phone">(909) 345-8290</span><span class="c-arrow">→</span></div>
+        </div>
+      </a>
+      <a href="https://www.lewisapartments.com/evergreen-apts-rancho-cucamonga-ca" class="c-card"
+         data-state="CA" data-location="rancho-cucamonga" data-type="apartment"
+         target="_blank" rel="noopener">
+        <div class="c-img"><img src="https://www.lewisapartments.com/uploads/images/images/307x194h/207713/Play_area.jpg" alt="Evergreen" loading="lazy"></div>
+        <div class="c-body">
+          <div class="c-region">Rancho Cucamonga, CA</div>
+          <div class="c-name">Evergreen</div>
+          <div class="c-address">10730 Church Street, Rancho Cucamonga, CA 91730</div>
+          <div class="c-foot"><span class="c-phone">(909) 362-8227</span><span class="c-arrow">→</span></div>
+        </div>
+      </a>
+
+      <div class="state-divider" id="nv-divider"><span class="state-label">Nevada</span></div>
+      <a href="https://www.lewisapartments.com/esprit-reno-nv" class="c-card"
+         data-state="NV" data-location="reno" data-type="apartment"
+         target="_blank" rel="noopener">
+        <div class="c-img"><div class="c-img-placeholder"></div></div>
+        <div class="c-body">
+          <div class="c-region">Reno, NV</div>
+          <div class="c-name">Esprit</div>
+          <div class="c-address">Reno, NV</div>
+          <div class="c-foot"><span class="c-phone">Virtual tours</span><span class="c-arrow">→</span></div>
+        </div>
+      </a>
+      <a href="https://www.lewisapartments.com/our-communities" class="c-card"
+         data-state="NV" data-location="las-vegas" data-type="apartment"
+         target="_blank" rel="noopener">
+        <div class="c-img"><div class="c-img-placeholder"></div></div>
+        <div class="c-body">
+          <div class="c-region">Las Vegas, NV</div>
+          <div class="c-name">Las Vegas Communities</div>
+          <div class="c-address">Las Vegas, NV</div>
+          <div class="c-foot"><span class="c-phone">Multiple locations</span><span class="c-arrow">→</span></div>
+        </div>
+      </a>
+
+      <div class="no-results" id="no-results" role="status">No communities match your search.</div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-include"></div>
+<script src="/js/includes.js"></script>
+<script>
+const cards = document.querySelectorAll('.c-card[data-state]');
+const searchInput = document.getElementById('search-input');
+const stateSelect = document.getElementById('filter-state');
+const locSelect   = document.getElementById('filter-location');
+const typeSelect  = document.getElementById('filter-type');
+const countEl     = document.getElementById('results-count');
+const noResults   = document.getElementById('no-results');
+
+function applyFilters() {
+  const q    = (searchInput.value || '').toLowerCase();
+  const state = stateSelect.value;
+  const loc  = locSelect.value;
+  const type = typeSelect.value;
+  let visible = 0;
+
+  cards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    const ok = (!q    || text.includes(q))
+            && (!state || card.dataset.state === state)
+            && (!loc   || card.dataset.location === loc)
+            && (!type  || card.dataset.type === type);
+    card.style.display = ok ? '' : 'none';
+    if (ok) visible++;
+  });
+
+  countEl.textContent = visible + (visible === 1 ? ' community' : ' communities');
+  noResults.classList.toggle('visible', visible === 0);
+
+  // Show/hide state dividers based on visible cards
+  ['ca','nv'].forEach(s => {
+    const divider = document.getElementById(s + '-divider');
+    if (!divider) return;
+    const stateCards = [...cards].filter(c => c.dataset.state === s.toUpperCase());
+    const anyVisible = stateCards.some(c => c.style.display !== 'none');
+    divider.style.display = anyVisible ? '' : 'none';
+  });
+}
+
+window.resetFilters = function() {
+  searchInput.value = '';
+  stateSelect.value = '';
+  locSelect.value   = '';
+  typeSelect.value  = '';
+  applyFilters();
+};
+
+searchInput.addEventListener('input', applyFilters);
+stateSelect.addEventListener('change', applyFilters);
+locSelect.addEventListener('change',   applyFilters);
+typeSelect.addEventListener('change',  applyFilters);
+
+// Scroll to Nevada section if hash
+if (window.location.hash === '#nevada') {
+  const nvDiv = document.getElementById('nv-divider');
+  if (nvDiv) setTimeout(() => nvDiv.scrollIntoView({behavior:'smooth',block:'start'}), 600);
+}
+</script>
+</body>
+</html>
