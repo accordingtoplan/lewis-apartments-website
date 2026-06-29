@@ -790,29 +790,25 @@ footer {
 /* Footer wordmark SVG keeps its black fills */
 .f-wordmark svg path { fill: #111111; }
 .f-wordmark {
-  padding: clamp(24px, 3vw, 40px) 0 clamp(16px, 2vw, 28px);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  /* Break out of .wrap to full viewport width */
+  /* Full viewport width — sits outside .wrap horizontally */
   width: 100vw;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  /* Clip right overflow — left aligns with content, right bleeds */
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: clamp(20px, 2.5vw, 36px) 0;
   overflow: hidden;
 }
 .f-wordmark a {
   display: block;
   line-height: 0;
-  /* Left padding matches the wrap gutter so LEWIS aligns with "About" */
-  padding-left: var(--pad);
 }
 .f-wordmark svg {
-  /* Wide enough that right side naturally overflows/clips */
-  width: auto;
-  height: clamp(100px, 14vw, 200px);
+  /* SVG fills full viewport width, height scales proportionally */
+  width: 100%;
+  height: auto;
   display: block;
-  max-width: none;
 }
 
 /* Bottom bar — three items spaced across full width */
