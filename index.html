@@ -136,14 +136,42 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
 .btn-outline-cream { border: 1px solid rgba(255,251,248,.4); color: var(--cream); background: transparent; }
 .btn-outline-cream:hover { background: rgba(255,251,248,.1); }
 
+/* ─── ANNOUNCEMENT BAR ───────────────────────────────── */
+.announce-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 201;
+  background: var(--blue);
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .3s;
+}
+.announce-bar.hidden { transform: translateY(-36px); }
+.announce-bar a {
+  font-size: 11.5px;
+  font-weight: 400;
+  letter-spacing: .04em;
+  color: rgba(255,251,248,.65);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color .2s;
+}
+.announce-bar a span { color: var(--cream); font-weight: 500; }
+.announce-bar a:hover { color: var(--cream); }
+.announce-bar a::after { content: '→'; font-size: 12px; }
+
 /* ─── NAV ─────────────────────────────────────────────── */
 .nav {
   position: fixed;
-  inset: 0 0 auto;
+  top: 36px; left: 0; right: 0;
   z-index: 200;
-  transition: background .3s, border-color .3s, box-shadow .3s;
+  transition: background .3s, border-color .3s, box-shadow .3s, top .3s;
   border-bottom: 1px solid transparent;
 }
+.nav.bar-hidden { top: 0; }
 .nav.scrolled {
   background: var(--cream);
   border-color: var(--border);
@@ -153,54 +181,187 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 72px;
+  height: 68px;
   max-width: var(--max);
   margin: 0 auto;
   padding: 0 var(--pad);
 }
 
-/* Logo — Lewis Group of Companies (actual logo file) */
-.logo { display: block; line-height: 0; }
+/* Logo */
+.logo { display: block; line-height: 0; flex-shrink: 0; }
 .logo-img {
-  height: 38px;
+  height: 36px;
   width: auto;
   display: block;
-  /* White logo on dark/video nav */
   filter: brightness(0) invert(1);
   transition: filter .3s;
 }
-/* On scrolled cream nav — switch to dark logo via CSS filter */
 .nav.scrolled .logo-img {
-  filter: brightness(0) saturate(100%) invert(10%) sepia(30%) saturate(800%) hue-rotate(160deg) brightness(90%);
+  filter: brightness(0) saturate(100%) invert(10%) sepia(40%) saturate(900%) hue-rotate(155deg) brightness(85%);
 }
 
+/* Nav links container */
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 0;
   list-style: none;
+  height: 68px;
+  margin: 0; padding: 0;
 }
-.nav-links a {
+.nav-links > li {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.nav-links > li > a,
+.nav-links > li > button {
+  font-family: var(--ff);
   font-size: 13px;
   font-weight: 400;
   letter-spacing: .01em;
   color: rgba(255,251,248,.85);
-  position: relative;
-  padding-bottom: 2px;
+  padding: 0 14px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
   transition: color .2s;
 }
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0;
-  width: 0; height: 1px;
-  background: currentColor;
-  transition: width .2s;
+.nav-links > li > a:hover,
+.nav-links > li > button:hover { color: var(--cream); }
+.nav.scrolled .nav-links > li > a,
+.nav.scrolled .nav-links > li > button { color: var(--blue); }
+.nav.scrolled .nav-links > li > a:hover,
+.nav.scrolled .nav-links > li > button:hover { color: var(--teal); }
+
+/* Dropdown chevron */
+.chev {
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translateY(-1px);
+  transition: transform .2s;
+  flex-shrink: 0;
 }
-.nav-links a:hover::after { width: 100%; }
-.nav.scrolled .nav-links a { color: var(--blue); }
-.nav-links a:hover,
-.nav.scrolled .nav-links a:hover { color: var(--teal); }
+.nav-links > li:hover .chev { transform: rotate(-135deg) translateY(2px); }
+
+/* CTA pill button */
+.nav-cta {
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: .05em !important;
+  color: var(--cream) !important;
+  border: 1px solid rgba(255,251,248,.5) !important;
+  border-radius: 2px !important;
+  padding: 8px 18px !important;
+  height: auto !important;
+  margin-left: 6px;
+}
+.nav-cta:hover { background: rgba(255,251,248,.1) !important; border-color: var(--cream) !important; }
+.nav.scrolled .nav-cta { color: var(--blue) !important; border-color: rgba(5,44,55,.5) !important; }
+.nav.scrolled .nav-cta:hover { background: var(--blue) !important; color: var(--cream) !important; border-color: var(--blue) !important; }
+
+/* Dropdown panel */
+.nav-drop {
+  position: absolute;
+  top: 100%; left: 0;
+  min-width: 240px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--teal);
+  box-shadow: 0 8px 32px rgba(5,44,55,.12);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity .18s, transform .18s, visibility .18s;
+  z-index: 300;
+}
+.nav-links > li:hover .nav-drop { opacity: 1; visibility: visible; transform: translateY(0); }
+.nav-drop a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 18px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--blue);
+  border-bottom: 1px solid var(--border);
+  width: 100%;
+  height: auto;
+  transition: background .15s, color .15s;
+}
+.nav-drop a:last-child { border-bottom: none; }
+.nav-drop a:hover { background: var(--teal-light); color: var(--teal); }
+.nav-drop-img {
+  width: 52px; height: 36px;
+  object-fit: cover;
+  border-radius: 2px;
+  flex-shrink: 0;
+  background: var(--warm);
+}
+.nav-drop-label { font-weight: 500; line-height: 1.3; }
+.nav-drop-label small { display: block; font-size: 11px; font-weight: 400; color: var(--gray); margin-top: 1px; }
+
+/* Hamburger */
+.nav-ham {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+.nav-ham span {
+  display: block;
+  width: 22px; height: 1.5px;
+  background: rgba(255,251,248,.9);
+  transition: background .3s, transform .3s, opacity .3s;
+}
+.nav.scrolled .nav-ham span { background: var(--blue); }
+.nav-ham.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-ham.open span:nth-child(2) { opacity: 0; }
+.nav-ham.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* Mobile fullscreen menu */
+.nav-mob {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--blue);
+  z-index: 198;
+  padding: 110px var(--pad) 48px;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform .3s ease;
+}
+.nav-mob.open { display: block; transform: translateX(0); }
+.nav-mob a {
+  display: block;
+  font-size: clamp(20px, 4vw, 30px);
+  font-weight: 500;
+  color: var(--cream);
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,251,248,.1);
+  transition: color .15s;
+  width: 100%; height: auto;
+}
+.nav-mob a:hover { color: rgba(255,251,248,.55); }
+.nav-mob .mob-sub {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255,251,248,.38);
+  padding: 10px 0 10px 14px;
+  border-bottom: 1px solid rgba(255,251,248,.06);
+}
+.nav-mob .mob-sub:hover { color: rgba(255,251,248,.7); }
 
 /* ─── HERO ────────────────────────────────────────────── */
 .hero {
@@ -210,6 +371,7 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
   overflow: hidden;
   display: flex;
   align-items: flex-end;
+  padding-top: 104px;
 }
 .hero-bg {
   position: absolute;
@@ -573,8 +735,9 @@ footer { background: var(--blue); padding: clamp(48px,6vw,80px) 0 32px; }
   .tab-panel.active { grid-template-columns: 1fr 1fr; }
   .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
 }
-@media (max-width: 680px) {
+@media (max-width: 860px) {
   .nav-links { display: none; }
+  .nav-ham { display: flex; }
   .tab-panel.active { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .loc-grid { grid-template-columns: 1fr 1fr; }
@@ -593,11 +756,11 @@ footer { background: var(--blue); padding: clamp(48px,6vw,80px) 0 32px; }
 <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
     <!-- Lewis Group of Companies wordmark SVG — matches the parent site exactly -->
-    <a href="https://lewisgroupofcompanies.com" class="logo" aria-label="Lewis Group of Companies">
-      <img src="./img/lewis-logo-white.svg"
-           alt="Lewis Group of Companies"
+    <a href="/" class="logo" aria-label="Lewis Apartments">
+      <img src="./img/lewis-apartments-logo-white.svg"
+           alt="Lewis Apartments"
            class="logo-img"
-           width="130" height="42">
+           width="114" height="37">
     </a>
 
     <ul class="nav-links" role="list">
@@ -627,8 +790,7 @@ footer { background: var(--blue); padding: clamp(48px,6vw,80px) 0 32px; }
     </video>
   </div>
   <div class="hero-content wrap">
-    <p class="t-eyebrow t-eyebrow-cream">Lewis Apartments</p>
-    <h1 class="t-h1">Where your life becomes<br>the good life.</h1>
+    <h1 class="t-h1">Lewis Apartment<br>Communities.</h1>
     <p class="t-body">We develop and manage apartment communities across California and Nevada — where thoughtful design and genuine care make all the difference.</p>
     <div class="hero-actions">
       <a href="#communities" class="btn btn-cream">View our communities</a>
@@ -941,11 +1103,59 @@ footer { background: var(--blue); padding: clamp(48px,6vw,80px) 0 32px; }
 </footer>
 
 <script>
-  const nav = document.getElementById('nav');
-  const tick = () => nav.classList.toggle('scrolled', window.scrollY > 60);
-  window.addEventListener('scroll', tick, { passive: true });
-  tick();
+  // Nav scroll state
+  const nav  = document.getElementById('nav');
+  const bar  = document.getElementById('announce-bar');
+  const ham  = document.getElementById('nav-ham');
+  const mob  = document.getElementById('nav-mob');
+  let lastY  = 0;
 
+  function onScroll() {
+    const y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 60);
+    // Hide announce bar after scrolling past it, slide nav up
+    if (y > 36) {
+      bar.classList.add('hidden');
+      nav.classList.add('bar-hidden');
+    } else {
+      bar.classList.remove('hidden');
+      nav.classList.remove('bar-hidden');
+    }
+    lastY = y;
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Hamburger / mobile menu
+  ham.addEventListener('click', () => {
+    const open = ham.classList.toggle('open');
+    ham.setAttribute('aria-expanded', open);
+    if (open) {
+      mob.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    } else {
+      mob.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // Close mobile menu on link click
+  mob.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      ham.classList.remove('open');
+      mob.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Close dropdowns on outside click
+  document.addEventListener('click', e => {
+    if (!nav.contains(e.target)) {
+      document.querySelectorAll('.nav-links > li').forEach(li => li.classList.remove('open'));
+    }
+  });
+
+  // Community tabs
   function switchTab(id, el) {
     document.querySelectorAll('.tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
