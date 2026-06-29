@@ -688,45 +688,143 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
   color: rgba(255,251,248,.62);
 }
 
-/* ─── FOOTER ──────────────────────────────────────────── */
-footer { background: var(--blue); padding: clamp(48px,6vw,80px) 0 32px; }
-.footer-top {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 48px;
-  margin-bottom: 48px;
-  padding-bottom: 48px;
-  border-bottom: 1px solid rgba(255,251,248,.08);
+/* ─── FOOTER — matches lewisgroupofcompanies.com exactly ── */
+footer {
+  background: var(--blue);
 }
-.f-logo-mark { font-size: 16px; font-weight: 600; letter-spacing: .08em; color: var(--cream); }
-.f-logo-sub  { font-size: 7.5px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,251,248,.3); margin-top: 3px; margin-bottom: 20px; }
-.f-brand p   { font-size: 13px; font-weight: 400; color: rgba(255,251,248,.45); line-height: 1.7; max-width: 280px; margin-bottom: 24px; }
-.f-social { display: flex; gap: 10px; }
-.soc { width: 34px; height: 34px; border-radius: 2px; border: 1px solid rgba(255,251,248,.12); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; color: rgba(255,251,248,.38); transition: border-color .15s, color .15s; }
-.soc:hover { border-color: rgba(255,251,248,.4); color: var(--cream); }
-.f-col h4 { font-size: 10px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,251,248,.24); margin-bottom: 18px; }
-.f-col ul { list-style: none; }
-.f-col li { margin-bottom: 10px; }
-.f-col a  { font-size: 13px; font-weight: 400; color: rgba(255,251,248,.48); transition: color .15s; }
-.f-col a:hover { color: var(--cream); }
-.footer-bottom {
+
+/* Top nav row */
+.f-nav-row {
+  border-bottom: 1px solid rgba(255,251,248,.1);
+  padding: clamp(32px,4vw,48px) 0;
+}
+.f-nav-row ul {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  gap: clamp(24px, 4vw, 56px);
+  list-style: none;
+  flex-wrap: wrap;
+}
+.f-nav-row a {
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255,251,248,.65);
+  letter-spacing: .01em;
+  transition: color .15s;
+}
+.f-nav-row a:hover { color: var(--cream); }
+
+/* Middle columns */
+.f-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 48px;
+  padding: clamp(40px,5vw,64px) 0;
+  border-bottom: 1px solid rgba(255,251,248,.1);
+}
+.f-col-head {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,251,248,.35);
+  margin-bottom: 20px;
+}
+.f-col-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.f-col-body a,
+.f-col-body p {
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255,251,248,.6);
+  line-height: 1.5;
+  transition: color .15s;
+}
+.f-col-body a:hover { color: var(--cream); }
+.f-col-body .f-contact-item {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 13px;
+  color: rgba(255,251,248,.6);
+}
+.f-col-body .f-contact-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  color: rgba(255,251,248,.3);
+  text-transform: uppercase;
+  min-width: 40px;
+  flex-shrink: 0;
+}
+
+/* Social row */
+.f-social-row {
+  padding: 20px 0 0;
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.f-cols-wrap { position: relative; }
+
+/* Bottom logo + copyright bar */
+.f-bottom {
+  padding: clamp(40px,5vw,64px) 0 clamp(28px,3vw,40px);
+  display: flex;
+  align-items: flex-end;
   justify-content: space-between;
   gap: 24px;
   flex-wrap: wrap;
 }
-.f-legal { font-size: 11px; font-weight: 400; color: rgba(255,251,248,.24); line-height: 1.8; max-width: 780px; }
-.f-legal p + p { margin-top: 6px; }
-.f-links { display: flex; gap: 20px; flex-shrink: 0; }
-.f-links a { font-size: 11.5px; color: rgba(255,251,248,.28); transition: color .15s; }
-.f-links a:hover { color: rgba(255,251,248,.7); }
+.f-bottom-logo img {
+  height: 52px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  opacity: .9;
+}
+.f-bottom-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+.f-copyright {
+  font-size: 11.5px;
+  font-weight: 400;
+  color: rgba(255,251,248,.3);
+  text-align: right;
+}
+.f-copyright a {
+  color: rgba(255,251,248,.3);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color .15s;
+}
+.f-copyright a:hover { color: rgba(255,251,248,.7); }
+.f-linkedin {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: rgba(255,251,248,.4);
+  transition: color .15s;
+  margin-bottom: 8px;
+}
+.f-linkedin:hover { color: var(--cream); }
+.f-linkedin svg { width: 18px; height: 18px; fill: currentColor; }
 
 /* ─── RESPONSIVE ──────────────────────────────────────── */
 @media (max-width: 1024px) {
   .mission-inner,
   .awards-grid,
   .cta-inner { grid-template-columns: 1fr; }
+  .f-cols { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .f-social-row { position: static; padding: 0; justify-content: flex-start; margin-top: 8px; }
   .split { grid-template-columns: 1fr; }
   .split-img { min-height: 400px; order: -1; }
   .split.img-right .split-img { order: 1; }
@@ -1043,64 +1141,102 @@ footer { background: var(--blue); padding: clamp(48px,6vw,80px) 0 32px; }
   </div>
 </section>
 
-<!-- FOOTER ─────────────────────────────────────────────── -->
+<!-- FOOTER — matches lewisgroupofcompanies.com ──────────── -->
 <footer aria-label="Site footer">
   <div class="wrap">
-    <div class="footer-top">
-      <div class="f-brand">
-        <img src="./img/lewis-logo-white.svg"
-             alt="Lewis Group of Companies"
-             style="height:36px;width:auto;margin-bottom:16px;filter:brightness(0) invert(1);opacity:.85;">
-        <p>Crafting beautifully appointed apartment homes across California and Nevada. Part of the Lewis Group of Companies.</p>
-        <div class="f-social">
-          <a href="https://www.facebook.com/LewisApartments" class="soc" aria-label="Facebook" target="_blank" rel="noopener">f</a>
-          <a href="https://www.instagram.com/lewisgroupofcompanies" class="soc" aria-label="Instagram" target="_blank" rel="noopener">ig</a>
+
+    <!-- Row 1: nav links -->
+    <nav class="f-nav-row" aria-label="Footer navigation">
+      <ul role="list">
+        <li><a href="/about-us">About us</a></li>
+        <li><a href="/our-communities">Our communities</a></li>
+        <li><a href="/contact-us">Contact us</a></li>
+        <li><a href="https://lewiscareers.com" target="_blank" rel="noopener">Careers</a></li>
+        <li><a href="/resident-corner">Residents</a></li>
+        <li><a href="https://lewisgroupofcompanies.com" target="_blank" rel="noopener">Lewis Group of Companies</a></li>
+      </ul>
+    </nav>
+
+    <!-- Row 2: contact · broker referrals · legal -->
+    <div class="f-cols-wrap">
+      <div class="f-cols">
+
+        <div>
+          <div class="f-col-head">Contact</div>
+          <div class="f-col-body">
+            <div class="f-contact-item">
+              <span class="f-contact-label">Tel</span>
+              <a href="tel:9099850971">(909) 985-0971</a>
+            </div>
+            <div class="f-contact-item">
+              <span class="f-contact-label">Email</span>
+              <a href="mailto:info@lewismc.com">info@lewismc.com</a>
+            </div>
+          </div>
         </div>
+
+        <div>
+          <div class="f-col-head">Broker Referrals</div>
+          <div class="f-col-body">
+            <a href="http://lewisbroker.com" target="_blank" rel="noopener">Lewis Broker</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="f-col-head">Legal</div>
+          <div class="f-col-body">
+            <a href="https://lewisgroupofcompanies.com/terms-of-service/" target="_blank" rel="noopener">Terms of Service</a>
+            <a href="https://lewisgroupofcompanies.com/lewis-privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a>
+            <a href="https://lewisgroupofcompanies.com/alpr-policy/" target="_blank" rel="noopener">ALPR Policy</a>
+            <a href="javascript:void(0);">Do Not Sell or Share My Personal Information</a>
+          </div>
+        </div>
+
       </div>
-      <div class="f-col">
-        <h4>Communities</h4>
-        <ul>
-          <li><a href="/our-communities">All communities</a></li>
-          <li><a href="/our-communities">California</a></li>
-          <li><a href="/our-communities">Nevada</a></li>
-          <li><a href="/single-family-homes">Single family homes</a></li>
-        </ul>
-      </div>
-      <div class="f-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="/about-us">About us</a></li>
-          <li><a href="https://lewiscareers.com" target="_blank" rel="noopener">Careers</a></li>
-          <li><a href="https://blog.lewisapartments.com" target="_blank" rel="noopener">Blog</a></li>
-          <li><a href="http://lewisbroker.com" target="_blank" rel="noopener">Broker referrals</a></li>
-          <li><a href="https://lewisgroupofcompanies.com" target="_blank" rel="noopener">Lewis Group of Companies</a></li>
-        </ul>
-      </div>
-      <div class="f-col">
-        <h4>Residents</h4>
-        <ul>
-          <li><a href="/resident-corner">Resident's corner</a></li>
-          <li><a href="/contact-us">Contact us</a></li>
-          <li><a href="https://lewisgroupofcompanies.com/terms-of-service/" target="_blank" rel="noopener">Terms of service</a></li>
-          <li><a href="https://lewisgroupofcompanies.com/lewis-privacy-policy/" target="_blank" rel="noopener">Privacy policy</a></li>
-          <li><a href="https://lewisgroupofcompanies.com/alpr-policy/" target="_blank" rel="noopener">ALPR policy</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="f-legal">
-        <p>©2026 Lewis Apartment Communities. CalDRE License #01994759.</p>
-        <p>Lewis Apartment Communities is pledged to the letter and spirit of U.S. policy for the achievement of equal housing opportunity. We encourage and support an affirmative advertising and marketing program in which there are no barriers to obtaining housing because of race, color, religion, sex, handicap, familial status, or national origin.</p>
-        <p>*Pricing based on move-in within 14 days with a 12-month lease term. Starting prices can change daily. The Lewis Move-In Guarantee and 24-Hour Service Commitment — some restrictions apply, see leasing office for details.</p>
-      </div>
-      <div class="f-links">
-        <a href="https://lewisgroupofcompanies.com/terms-of-service/">Terms</a>
-        <a href="https://lewisgroupofcompanies.com/lewis-privacy-policy/">Privacy</a>
-        <a href="https://lewisgroupofcompanies.com/alpr-policy/">ALPR</a>
+
+      <!-- LinkedIn — top right of columns section -->
+      <div class="f-social-row">
+        <a href="https://www.linkedin.com/company/the-lewis-group-of-companies"
+           target="_blank" rel="noopener"
+           class="f-linkedin"
+           aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </a>
       </div>
     </div>
+
+    <!-- Bottom: logo left, copyright right -->
+    <div class="f-bottom">
+      <div class="f-bottom-logo">
+        <a href="https://lewisgroupofcompanies.com" target="_blank" rel="noopener" aria-label="Lewis Group of Companies">
+          <img src="./img/lewis-logo-white.svg" alt="Lewis Group of Companies" width="200" height="64">
+        </a>
+      </div>
+      <div class="f-bottom-right">
+        <p class="f-copyright">All Rights Reserved.</p>
+        <p class="f-copyright">© Copyright 2026 Lewis Management Corp</p>
+        <p class="f-copyright">CalDRE License #01994759 &nbsp;·&nbsp;
+          <a href="https://lewisgroupofcompanies.com/lewis-privacy-policy/">Privacy Policy</a> &nbsp;·&nbsp;
+          <a href="https://lewisgroupofcompanies.com/alpr-policy/">ALPR Policy</a>
+        </p>
+        <p class="f-copyright" style="margin-top:4px;">
+          <a href="https://www.moresleep.net" target="_blank" rel="noopener">Site by MoreSleep</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Legal disclaimer -->
+    <div style="border-top:1px solid rgba(255,251,248,.08);padding:20px 0;">
+      <p style="font-size:10.5px;font-weight:400;color:rgba(255,251,248,.22);line-height:1.8;">
+        *Pricing based on move-in within 14 days with a 12-month lease term. Starting prices can change daily and will change based on move-in date and lease term chosen. Deposit is subject to change based on approved credit. Scheduled tours conclude at dusk. The Lewis Move-In Guarantee and 24-Hour Service Commitment — some restrictions apply, see leasing office for details. Lewis Apartment Communities is pledged to the letter and spirit of U.S. policy for the achievement of equal housing opportunity. We encourage and support an affirmative advertising and marketing program in which there are no barriers to obtaining housing because of race, color, religion, sex, handicap, familial status, or national origin.
+      </p>
+    </div>
+
   </div>
 </footer>
+
 
 <script>
   // Nav scroll state
