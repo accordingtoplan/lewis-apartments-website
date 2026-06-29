@@ -777,22 +777,27 @@ footer {
 .f-linkedin:hover { background: var(--blue); color: var(--cream); }
 .f-linkedin svg { width: 15px; height: 15px; fill: currentColor; }
 
-/* Giant LEWIS GROUP OF COMPANIES wordmark */
+/* Full-bleed LEWIS GROUP OF COMPANIES wordmark — true edge-to-edge */
 .f-wordmark {
-  padding: clamp(32px, 4vw, 48px) 0 clamp(24px, 3vw, 36px);
+  padding: clamp(28px, 3.5vw, 48px) 0 clamp(20px, 2.5vw, 36px);
+  border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   overflow: hidden;
+  /* Full viewport width — break out of any container */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .f-wordmark a {
   display: block;
-  line-height: 1;
+  line-height: 0;
 }
 .f-wordmark img {
   width: 100%;
   height: auto;
   display: block;
-  /* White SVG → black: invert the white to black */
-  filter: brightness(0);
+  /* SVG already has black fills — no filter needed */
 }
 
 /* Bottom bar — three items spaced across full width */
