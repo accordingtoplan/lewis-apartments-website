@@ -159,34 +159,20 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
   padding: 0 var(--pad);
 }
 
-/* Logo — Lewis Group of Companies lockup (HTML, Haffer SQ) */
-.logo {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-  gap: 3px;
+/* Logo — Lewis Group of Companies (actual logo file) */
+.logo { display: block; line-height: 0; }
+.logo-img {
+  height: 42px;
+  width: auto;
+  display: block;
+  /* White logo on dark/video nav */
+  filter: brightness(0) invert(1);
+  transition: filter .3s;
 }
-.logo-mark {
-  font-family: 'Haffer SQ', sans-serif;
-  font-size: 26px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  color: var(--cream);
-  line-height: 1;
-  transition: color .3s;
+/* On scrolled cream nav — switch to dark logo via CSS filter */
+.nav.scrolled .logo-img {
+  filter: brightness(0) saturate(100%) invert(10%) sepia(30%) saturate(800%) hue-rotate(160deg) brightness(90%);
 }
-.logo-sub {
-  font-family: 'Haffer SQ', sans-serif;
-  font-size: 7px;
-  font-weight: 400;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(255,251,248,.75);
-  line-height: 1;
-  transition: color .3s;
-}
-.nav.scrolled .logo-mark { color: var(--blue); }
-.nav.scrolled .logo-sub  { color: var(--blue); }
 
 .nav-links {
   display: flex;
@@ -608,8 +594,10 @@ footer { background: var(--blue); padding: clamp(48px,6vw,80px) 0 32px; }
   <div class="nav-inner">
     <!-- Lewis Group of Companies wordmark SVG — matches the parent site exactly -->
     <a href="https://lewisgroupofcompanies.com" class="logo" aria-label="Lewis Group of Companies">
-      <span class="logo-mark">LEWIS</span>
-      <span class="logo-sub">GROUP OF COMPANIES</span>
+      <img src="./img/lewis-logo-white.png"
+           alt="Lewis Group of Companies"
+           class="logo-img"
+           width="130" height="42">
     </a>
 
     <ul class="nav-links" role="list">
@@ -898,8 +886,9 @@ footer { background: var(--blue); padding: clamp(48px,6vw,80px) 0 32px; }
   <div class="wrap">
     <div class="footer-top">
       <div class="f-brand">
-        <div class="f-logo-mark">LEWIS</div>
-        <div class="f-logo-sub">Apartments</div>
+        <img src="./img/lewis-logo-white.png"
+             alt="Lewis Group of Companies"
+             style="height:36px;width:auto;margin-bottom:16px;filter:brightness(0) invert(1);opacity:.85;">
         <p>Crafting beautifully appointed apartment homes across California and Nevada. Part of the Lewis Group of Companies.</p>
         <div class="f-social">
           <a href="https://www.facebook.com/LewisApartments" class="soc" aria-label="Facebook" target="_blank" rel="noopener">f</a>
