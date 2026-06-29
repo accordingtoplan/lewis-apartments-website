@@ -159,12 +159,34 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
   padding: 0 var(--pad);
 }
 
-/* Logo — SVG Lewis Group of Companies lockup */
-.logo { display: block; line-height: 0; }
-.logo svg .logo-main    { fill: white; transition: fill .3s; }
-.logo svg .logo-sub     { fill: white; transition: fill .3s; }
-.nav.scrolled .logo svg .logo-main { fill: var(--blue); }
-.nav.scrolled .logo svg .logo-sub  { fill: var(--blue); }
+/* Logo — Lewis Group of Companies lockup (HTML, Haffer SQ) */
+.logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  gap: 3px;
+}
+.logo-mark {
+  font-family: 'Haffer SQ', sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--cream);
+  line-height: 1;
+  transition: color .3s;
+}
+.logo-sub {
+  font-family: 'Haffer SQ', sans-serif;
+  font-size: 7px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,251,248,.75);
+  line-height: 1;
+  transition: color .3s;
+}
+.nav.scrolled .logo-mark { color: var(--blue); }
+.nav.scrolled .logo-sub  { color: var(--blue); }
 
 .nav-links {
   display: flex;
@@ -208,7 +230,8 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
   inset: 0;
   background: var(--blue);
 }
-.hero-bg img {
+.hero-bg img,
+.hero-bg video {
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: center 40%;
@@ -585,20 +608,8 @@ footer { background: var(--blue); padding: clamp(48px,6vw,80px) 0 32px; }
   <div class="nav-inner">
     <!-- Lewis Group of Companies wordmark SVG — matches the parent site exactly -->
     <a href="https://lewisgroupofcompanies.com" class="logo" aria-label="Lewis Group of Companies">
-      <svg width="120" height="38" viewBox="0 0 120 38" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <text x="0" y="26"
-          font-family="'Haffer SQ', sans-serif"
-          font-weight="600"
-          font-size="28"
-          letter-spacing="0.05em"
-          class="logo-main">LEWIS</text>
-        <text x="1" y="37"
-          font-family="'Haffer SQ', sans-serif"
-          font-weight="400"
-          font-size="7.5"
-          letter-spacing="0.22em"
-          class="logo-sub">GROUP OF COMPANIES</text>
-      </svg>
+      <span class="logo-mark">LEWIS</span>
+      <span class="logo-sub">GROUP OF COMPANIES</span>
     </a>
 
     <ul class="nav-links" role="list">
@@ -615,13 +626,17 @@ footer { background: var(--blue); padding: clamp(48px,6vw,80px) 0 32px; }
 <!-- HERO ──────────────────────────────────────────────── -->
 <section class="hero" aria-label="Hero">
   <div class="hero-bg">
-    <!-- Full-res hero image — largest available size from lewisapartments.com CDN -->
-    <img
-      src="https://www.lewisapartments.com/uploads/images/images/400x300h/813043/HCTV_Pool5_10.2025.jpg"
-      alt="Homecoming at Terra Vista pool"
-      loading="eager"
-      fetchpriority="high"
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      poster="https://www.lewisapartments.com/uploads/images/images/400x300h/813043/HCTV_Pool5_10.2025.jpg"
     >
+      <source src="https://lewisgroupofcompanies.com/wp-content/uploads/2023/08/our_businesses-module.mp4" type="video/mp4">
+      <!-- Fallback image if video fails -->
+      <img src="https://lewisgroupofcompanies.com/wp-content/uploads/2023/08/Lewis_Jamboree_EntryGate_0114-11x8_edit-1-2048x1365.jpg" alt="Lewis communities">
+    </video>
   </div>
   <div class="hero-content wrap">
     <p class="t-eyebrow t-eyebrow-cream">Lewis Apartments</p>
@@ -655,8 +670,8 @@ footer { background: var(--blue); padding: clamp(48px,6vw,80px) 0 32px; }
 <section class="split" aria-labelledby="recog-h">
   <div class="split-img">
     <img
-      src="https://www.lewisapartments.com/uploads/images/images/400x300h/809871/Sunscape_Pool4_9.2025.jpg"
-      alt="Sunscape community, Alta Loma"
+      src="https://lewisgroupofcompanies.com/wp-content/uploads/2023/08/Lewis_Jamboree_EntryGate_0114-11x8_edit-1-2048x1365.jpg"
+      alt="Lewis community entrance"
       loading="lazy"
     >
   </div>
@@ -815,8 +830,8 @@ footer { background: var(--blue); padding: clamp(48px,6vw,80px) 0 32px; }
   </div>
   <div class="split-img">
     <img
-      src="https://www.lewisapartments.com/uploads/images/images/400x300h/736817/1210_GramercyRental_Ext1_2.2023.jpg"
-      alt="Gramercy rental home exterior"
+      src="https://lewisgroupofcompanies.com/wp-content/uploads/2023/08/Lewis-Group_Locations.75-scaled.jpg"
+      alt="Lewis single family home"
       loading="lazy"
     >
   </div>
