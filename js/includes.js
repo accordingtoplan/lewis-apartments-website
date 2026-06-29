@@ -4,8 +4,11 @@
  * data-root on <html> controls the path prefix (set per page).
  */
 (function () {
-  // base href handles path resolution — just use relative paths
-  const root = '';
+  // Detect path depth to build correct relative root
+  const depth = window.location.pathname
+    .replace(/\/lewis-apartments-website/, '')
+    .split('/').filter(Boolean).length;
+  const root = depth > 0 ? '../'.repeat(depth) : '';
 
   function loadInclude(url, targetId, cb) {
     fetch(url)
