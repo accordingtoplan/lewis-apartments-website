@@ -801,13 +801,10 @@ footer {
   line-height: 0;
 }
 .f-wordmark svg {
+  /* Fill the full content width — same as the reference site */
   width: 100%;
   height: auto;
   display: block;
-  /* Scale down slightly — the SVG viewBox is wide, this keeps it proportionate */
-  max-height: clamp(48px, 6vw, 80px);
-  /* Align to fill width exactly like the reference */
-  width: 100%;
 }
 
 /* Bottom bar — three items spaced across full width */
