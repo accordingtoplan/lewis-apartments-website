@@ -421,6 +421,66 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
 .hero-content .t-body { color: rgba(255,251,248,.72); max-width: 500px; margin-bottom: 44px; }
 .hero-actions { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
 
+/* ─── SEARCH BAR ──────────────────────────────────────── */
+.search-section { background: var(--teal-mid); }
+.search-inner {
+  display: flex;
+  align-items: stretch;
+  min-height: 64px;
+}
+.search-field {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 24px;
+  border-right: 1px solid rgba(255,251,248,.1);
+}
+.search-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,251,248,.4);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.search-field select {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--ff);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--cream);
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+.search-field select option { background: var(--blue); color: var(--cream); }
+.search-submit {
+  background: var(--teal);
+  color: var(--cream);
+  padding: 0 36px;
+  font-family: var(--ff);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  border: none;
+  cursor: pointer;
+  transition: background .18s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+.search-submit:hover { background: var(--blue); }
+@media (max-width: 640px) {
+  .search-inner { flex-direction: column; }
+  .search-field { border-right: none; border-bottom: 1px solid rgba(255,251,248,.08); padding: 16px 20px; }
+  .search-submit { padding: 16px 20px; justify-content: center; }
+}
+
 /* ─── MISSION ─────────────────────────────────────────── */
 .mission-inner {
   display: grid;
