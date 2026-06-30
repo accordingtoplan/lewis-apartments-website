@@ -35,6 +35,43 @@
   </div>
 </section>
 
+<!-- SEARCH BAR — links into Our Communities with filters pre-applied -->
+<div class="search-section" role="search" aria-label="Search communities">
+  <div class="wrap">
+    <form class="search-inner" onsubmit="handleSearch(event)">
+      <div class="search-field">
+        <span class="search-label">Location</span>
+        <select id="search-location" aria-label="Select location">
+          <option value="">All locations</option>
+          <optgroup label="California">
+            <option value="rancho-cucamonga">Rancho Cucamonga</option>
+            <option value="chino">Chino</option>
+            <option value="chino-hills">Chino Hills</option>
+            <option value="sacramento">Sacramento</option>
+            <option value="ontario">Ontario</option>
+          </optgroup>
+          <optgroup label="Nevada">
+            <option value="las-vegas">Las Vegas</option>
+            <option value="reno">Reno</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="search-field">
+        <span class="search-label">Type</span>
+        <select id="search-type" aria-label="Select type">
+          <option value="">Apartments &amp; homes</option>
+          <option value="apartment">Apartments</option>
+          <option value="senior">Senior communities</option>
+        </select>
+      </div>
+      <button type="submit" class="search-submit">
+        Search communities
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+    </form>
+  </div>
+</div>
+
 <!-- MISSION ────────────────────────────────────────────── -->
 <section class="section" style="background:var(--cream);" aria-labelledby="mission-h">
   <div class="wrap">
@@ -282,5 +319,16 @@
 <div id="footer-include"></div>
 
 <script src="js/includes.js"></script>
+<script>
+function handleSearch(e) {
+  e.preventDefault();
+  const loc  = document.getElementById('search-location').value;
+  const type = document.getElementById('search-type').value;
+  const params = new URLSearchParams();
+  if (loc)  params.set('location', loc);
+  if (type) params.set('type', type);
+  window.location.href = 'our-communities/' + (params.toString() ? '?' + params.toString() : '');
+}
+</script>
 </body>
 </html>
