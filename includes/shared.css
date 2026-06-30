@@ -106,11 +106,22 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
   gap: 10px;
   font-size: 14px;
   font-weight: 500;
-  letter-spacing: .04em;
+  letter-spacing: .02em;
   transition: gap .2s;
 }
-.cta-link::after { content: '→'; font-size: 15px; }
-.cta-link:hover { gap: 16px; }
+.cta-link::after {
+  content: '';
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'/%3E%3Cpolyline points='12 5 19 12 12 19'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  transition: transform .2s;
+}
+.cta-link:hover { gap: 14px; }
+.cta-link:hover::after { transform: translateX(2px); }
 .cta-link-dark  { color: var(--blue); }
 .cta-link-teal  { color: var(--teal); }
 .cta-link-cream { color: var(--cream); }
@@ -118,16 +129,27 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 14px 32px;
+  gap: 12px;
+  padding: 15px 30px;
   font-family: var(--ff);
   font-size: 14px;
   font-weight: 500;
-  letter-spacing: .03em;
-  border-radius: 2px;
-  transition: background .18s, color .18s;
+  letter-spacing: .02em;
+  border-radius: 6px;
+  transition: background .18s, color .18s, transform .18s;
 }
-.btn::after { content: '→'; }
+.btn::after {
+  content: '';
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'/%3E%3Cpolyline points='12 5 19 12 12 19'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  transition: transform .18s;
+}
+.btn:hover::after { transform: translateX(3px); }
 .btn-cream { background: var(--cream); color: var(--blue); }
 .btn-cream:hover { background: var(--warm); }
 .btn-outline-cream { border: 1px solid rgba(255,251,248,.4); color: var(--cream); background: transparent; }
@@ -303,7 +325,7 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
 .nav-drop-img {
   width: 52px; height: 36px;
   object-fit: cover;
-  border-radius: 2px;
+  border-radius: 4px;
   flex-shrink: 0;
   background: var(--warm);
 }
@@ -591,7 +613,7 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
   flex-direction: column;
   gap: 1px;
   background: rgba(5,44,55,.1);
-  border-radius: 3px;
+  border-radius: 6px;
   overflow: hidden;
 }
 .award-row {
@@ -622,7 +644,7 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
   grid-template-columns: repeat(4, 1fr);
   gap: 1px;
   background: var(--border);
-  border-radius: 3px;
+  border-radius: 6px;
   overflow: hidden;
   margin-top: 48px;
 }
