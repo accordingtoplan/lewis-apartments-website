@@ -474,6 +474,25 @@ if (window.location.hash === '#nevada') {
   const nvDiv = document.getElementById('nv-divider');
   if (nvDiv) setTimeout(() => nvDiv.scrollIntoView({behavior:'smooth',block:'start'}), 600);
 }
+
+// Pre-apply filters from URL params (e.g. from homepage search)
+const urlParams = new URLSearchParams(window.location.search);
+const urlLocation = urlParams.get('location');
+const urlType     = urlParams.get('type');
+if (urlLocation) {
+  // Map homepage broad locations to filter values where possible
+  const locMap = { 'las-vegas': 'las-vegas', 'reno': 'reno' };
+  const mapped = locMap[urlLocation] || urlLocation;
+  if ([...locSelect.options].some(o => o.value === mapped)) {
+    locSelect.value = mapped;
+  } else if (mapped === 'las-vegas' || mapped === 'reno') {
+    stateSelect.value = 'NV';
+  }
+}
+if (urlType && [...typeSelect.options].some(o => o.value === urlType)) {
+  typeSelect.value = urlType;
+}
+if (urlLocation || urlType) applyFilters();
 </script>
 </body>
 </html>
