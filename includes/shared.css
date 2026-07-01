@@ -282,7 +282,7 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
   letter-spacing: .05em !important;
   color: var(--cream) !important;
   border: 1px solid rgba(255,251,248,.5) !important;
-  border-radius: 2px !important;
+  border-radius: 6px !important;
   padding: 8px 18px !important;
   height: auto !important;
   margin-left: 6px;
@@ -501,6 +501,7 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
   position: relative;
   overflow: hidden;
   background: var(--blue);
+  border-radius: 0;
 }
 .split-img img {
   width: 100%; height: 100%;
@@ -539,6 +540,8 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
   grid-template-columns: repeat(4, 1fr);
   gap: 1px;
   background: rgba(255,251,248,.06);
+  border-radius: 8px;
+  overflow: hidden;
 }
 .stat {
   background: rgba(255,251,248,.02);
@@ -597,8 +600,6 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
 .tab-panel.active {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--border);
   align-content: start;
 }
 
@@ -606,9 +607,14 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
 .c-card {
   display: block;
   background: var(--cream);
-  transition: background .18s;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: background .18s, box-shadow .18s;
 }
-.c-card:hover { background: #F5F0EB; }
+.c-card:hover {
+  box-shadow: 0 4px 24px rgba(5,44,55,.08);
+}
 .c-img {
   aspect-ratio: 3/2;
   overflow: hidden;
@@ -715,7 +721,6 @@ button { font-family: var(--ff); cursor: pointer; border: none; background: none
   position: relative;
   transition: background .18s;
 }
-.loc:hover { background: #EAF2F2; }
 .loc-region {
   font-size: 9.5px;
   font-weight: 500;
@@ -778,6 +783,7 @@ footer {
   padding: clamp(48px, 6vw, 80px) 0 clamp(40px, 5vw, 64px);
   border-bottom: 1px solid var(--border);
 }
+/* f-main footer uses no radius — it's a flat section */
 
 /* Left column — large stacked nav links */
 .f-nav-col {
