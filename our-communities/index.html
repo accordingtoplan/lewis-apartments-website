@@ -114,8 +114,7 @@
 .results-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--border);
+  gap: 16px;
   align-content: start;
 }
 .no-results {
@@ -152,7 +151,8 @@
 }
 
 /* Community card — same as HP but slightly larger */
-.c-card { display: block; background: var(--cream); transition: background .18s; }
+.c-card { display: block; background: var(--cream); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; transition: background .18s, box-shadow .18s; }
+.c-card:hover { box-shadow: 0 4px 24px rgba(5,44,55,.08); }
 .c-card:hover { background: #F0EBE5; }
 .c-img { aspect-ratio: 3/2; overflow: hidden; background: var(--teal-mid); }
 .c-img img { width:100%;height:100%;object-fit:cover;transition:transform .5s ease; }
