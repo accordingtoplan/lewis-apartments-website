@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page not found — Lewis Apartments</title>
+<meta name="robots" content="noindex">
+<style>
+/* Self-contained: GitHub Pages serves 404.html at any URL depth,
+   so all asset paths are absolute to the project base. */
+@font-face {
+  font-family: 'Haffer SQ';
+  src: url('/lewis-apartments-website/fonts/HafferSQ-Regular.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Haffer SQ';
+  src: url('/lewis-apartments-website/fonts/HafferSQ-Medium.woff2') format('woff2');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+:root {
+  --cream: #FFFBF8;
+  --blue:  #052C37;
+  --teal:  #196464;
+  --warm:  #EADECE;
+  --ff: 'Haffer SQ', sans-serif;
+  --pad: clamp(32px, 5.5vw, 96px);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: var(--ff);
+  background: var(--blue);
+  color: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+}
+a { text-decoration: none; color: inherit; }
+
+/* Wordmark */
+.brand {
+  padding: 28px var(--pad);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: .02em;
+  opacity: 0;
+  animation: rise .8s ease .1s forwards;
+}
+.brand span { opacity: .55; font-weight: 400; }
+
+/* Ghost 404 — fills the frame behind the message */
+.ghost {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  pointer-events: none;
+  overflow: hidden;
+}
+.ghost span {
+  font-size: clamp(280px, 52vw, 900px);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255,251,248,.14);
+  transform: translateX(12%);
+  opacity: 0;
+  animation: ghostIn 1.6s cubic-bezier(.22,1,.36,1) .2s forwards;
+}
+
+/* Message */
+.main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--pad);
+  position: relative;
+  z-index: 1;
+}
+.msg { max-width: 640px; }
+.eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255,251,248,.45);
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: rise .8s ease .25s forwards;
+}
+h1 {
+  font-size: clamp(40px, 5.5vw, 76px);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: rise .8s ease .35s forwards;
+}
+.lead {
+  font-size: clamp(16px, 1.4vw, 19px);
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255,251,248,.75);
+  max-width: 46ch;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: rise .8s ease .45s forwards;
+}
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: rise .8s ease .55s forwards;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--cream);
+  color: var(--blue);
+  font-family: var(--ff);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 15px 26px;
+  border-radius: 8px;
+  transition: background .25s ease;
+}
+.btn::after {
+  content: '→';
+  transition: transform .25s ease;
+}
+.btn:hover { background: var(--warm); }
+.btn:hover::after { transform: translateX(3px); }
+.btn:focus-visible, .cta:focus-visible {
+  outline: 2px solid var(--cream);
+  outline-offset: 3px;
+}
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--cream);
+  transition: gap .25s ease;
+}
+.cta::after { content: '→'; transition: transform .25s ease; }
+.cta:hover { gap: 14px; }
+
+/* Footer line */
+.foot {
+  padding: 28px var(--pad);
+  font-size: 13px;
+  color: rgba(255,251,248,.4);
+  opacity: 0;
+  animation: rise .8s ease .65s forwards;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes ghostIn {
+  from { opacity: 0; transform: translateX(16%); }
+  to   { opacity: 1; transform: translateX(12%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand, .eyebrow, h1, .lead, .actions, .foot, .ghost span {
+    animation: none; opacity: 1; transform: none;
+  }
+  .ghost span { transform: translateX(12%); }
+}
+@media (max-width: 640px) {
+  .ghost { align-items: flex-end; }
+  .ghost span { font-size: 70vw; transform: translate(8%, 10%); }
+  .actions { gap: 20px; }
+}
+</style>
+</head>
+<body>
+
+<header class="brand">
+  <a href="/lewis-apartments-website/">Lewis <span>Apartments</span></a>
+</header>
+
+<div class="ghost" aria-hidden="true"><span>404</span></div>
+
+<main class="main">
+  <div class="msg">
+    <p class="eyebrow">Page not found</p>
+    <h1>This address<br>doesn't exist.</h1>
+    <p class="lead">The page you're looking for may have moved, or it was never built. Fortunately, we have plenty of addresses that were.</p>
+    <div class="actions">
+      <a href="/lewis-apartments-website/" class="btn">Back to home</a>
+      <a href="/lewis-apartments-website/our-communities/" class="cta">View our communities</a>
+    </div>
+  </div>
+</main>
+
+<p class="foot">Lewis Apartment Communities · Better communities. Better lives.</p>
+
+</body>
+</html>
