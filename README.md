@@ -6,7 +6,8 @@ Brand-faithful redesign of [lewisapartments.com](https://www.lewisapartments.com
 - **Sub-brand color:** Teal `#196464`
 - **Primary:** Lewis Blue `#052C37`
 - **Background:** Cream `#FFFBF8`
-- **Type:** Haffer SQ XH Medium (headlines), Haffer SQ Regular (body) — DM Sans as web stand-in until Haffer SQ is licensed for web
+- **Type:** Haffer SQ (Regular, Medium, SemiBold), self-hosted in `fonts/`
+- **Copy and facts:** follow the Lewis brand system (voice, names, claims, awards). Change list: `apartments-redesign-changes.md` in the Lewis project folder
 
 ## Structure
 ```
