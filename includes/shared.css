@@ -873,10 +873,10 @@ footer {
 /* Footer wordmark SVG keeps its black fills */
 .f-wordmark svg path { fill: #111111; }
 .f-wordmark {
-  /* Direct child of footer — no wrap, naturally full width */
+  /* Same side margins as the page content */
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  padding: clamp(20px, 2.5vw, 36px) 0;
+  padding: clamp(20px, 2.5vw, 36px) var(--pad);
   overflow: hidden;
 }
 .f-wordmark a {
@@ -884,7 +884,7 @@ footer {
   line-height: 0;
 }
 .f-wordmark svg {
-  /* Fill full footer width = full viewport width */
+  /* Fill the content width */
   width: 100%;
   height: auto;
   display: block;
