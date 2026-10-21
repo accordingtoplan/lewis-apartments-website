@@ -12,16 +12,31 @@ Brand-faithful redesign of [lewisapartments.com](https://www.lewisapartments.com
 ## Structure
 ```
 /
-├── index.html          # Homepage prototype (Phase 1)
-└── README.md
+├── index.html              # Home
+├── about-us/               # About
+├── our-communities/        # Communities, with filters
+├── single-family-homes/    # Rental homes
+├── residents/              # Resident's corner
+├── contact-us/             # Contact
+├── 404.html
+├── includes/               # nav.html, footer.html, shared.css
+├── js/includes.js          # Loads the nav; loads the footer only where a page lacks it
+├── fonts/                  # Haffer SQ
+└── tools/sync-footer.py    # Copies includes/footer.html into every page
 ```
 
+The footer lives in `includes/footer.html`. After editing it, run `python3 tools/sync-footer.py` so every page carries it in its HTML (the legal lines must not depend on JavaScript).
+
+Links between pages are relative (`about-us/`, `../contact-us/`), so they work on GitHub Pages and on a root domain. The nav and footer still use `/lewis-apartments-website/` paths; change those when the site moves to lewisapartments.com.
+
 ## Roadmap
-- [x] Phase 1 — Homepage prototype (HTML)
-- [ ] Phase 2 — Next.js scaffold + component library
-- [ ] Phase 3 — Headless WordPress integration (WP REST API)
-- [ ] Phase 4 — Inner pages (Communities, Locations, About, Residents)
-- [ ] Phase 5 — Production deploy (Vercel)
+- [x] Phase 1: homepage prototype (HTML)
+- [x] Inner pages: Communities, Single-family homes, About, Residents, Contact, 404
+- [x] Copy aligned with the Lewis brand system
+- [ ] Open questions for Lewis: community list, legal footer, ranking source, business colors (see `apartments-redesign-changes.md` in the Lewis project folder)
+- [ ] Next.js scaffold and component library
+- [ ] Headless WordPress integration (WP REST API)
+- [ ] Production deploy
 
 ## Reference
 - Parent brand: [lewisgroupofcompanies.com](https://lewisgroupofcompanies.com)

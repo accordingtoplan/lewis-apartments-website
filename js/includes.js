@@ -102,6 +102,7 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     loadInclude(root + 'includes/nav.html',    'nav-include', initNav);
-    loadInclude(root + 'includes/footer.html', 'footer-include');
+    const footer = document.getElementById('footer-include');
+    if (footer && !footer.dataset.static) loadInclude(root + 'includes/footer.html', 'footer-include');
   });
 })();
